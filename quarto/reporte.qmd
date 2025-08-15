@@ -14,6 +14,8 @@ Para esta primera etapa, empezaremos por cargar las librerías que necesitamos y
 
 Hola como estas
 
+bien y tú?
+
 ```{r}
 #| output: false
 library(tidyverse)
