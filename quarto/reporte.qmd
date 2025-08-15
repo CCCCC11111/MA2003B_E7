@@ -19,9 +19,14 @@ library(readxl)
 
 options(scipen = 999)
 ```
-Ahora cargamos los datos que nos proporcionó el Socio Formador:
+Ahora cargamos los datos que nos proporcionó el Socio Formador. Para los datos del 2024 tenemos:
 ```{r}
-datos <- read_excel(here("data", "BD 2024.xlsx"))
+calidad_aire_2024_tbl <- read_excel(here("data", "BD 2024.xlsx")) %>%
+  glimpse()
 ```
-
+Para los datos del 2025 tenemos:
+```{r}
+calidad_aire_2025_tbl <- read_excel(here("data", "BD 2025.xlsx")) %>%
+  glimpse()
+```
 
