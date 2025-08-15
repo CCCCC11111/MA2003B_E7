@@ -12,7 +12,7 @@ format:
 
 Para esta primera etapa, empezaremos por cargar las librerías que necesitamos y establecemos algunas opciones de configuración:
 
-saduasd
+saduasdbbhbh
 ```{r}
 #| output: false
 library(tidyverse)
