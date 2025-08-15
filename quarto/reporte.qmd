@@ -12,7 +12,7 @@ format:
 
 Para esta primera etapa, empezaremos por cargar las librerías que necesitamos y establecemos algunas opciones de configuración:
 ```{r}
-#|output: false
+#| output: false
 library(tidyverse)
 library(here)
 library(readxl)
@@ -29,4 +29,5 @@ Para los datos del 2025 tenemos:
 calidad_aire_2025_tbl <- read_excel(here("data", "BD 2025.xlsx")) %>%
   glimpse()
 ```
+
 
