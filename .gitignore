@@ -4,3 +4,5 @@
 renv/library/
 renv/staging/
 output/
+
+/.quarto/
