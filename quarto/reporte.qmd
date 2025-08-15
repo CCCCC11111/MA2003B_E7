@@ -16,6 +16,8 @@ Hola como estas
 
 bien y tú?
 
+:]
+
 ```{r}
 #| output: false
 library(tidyverse)
