@@ -12,7 +12,8 @@ format:
 
 Para esta primera etapa, empezaremos por cargar las librerías que necesitamos y establecemos algunas opciones de configuración:
 
-saduasdbbhbh
+Hola como estas
+
 ```{r}
 #| output: false
 library(tidyverse)
