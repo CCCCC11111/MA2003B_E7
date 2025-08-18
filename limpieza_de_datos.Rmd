@@ -1,0 +1,109 @@
+---
+title: "Limpieza de Datos"
+author: "Equipo 7"
+date: "2025-08-18"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+```{r include=FALSE}
+library(tidyverse)
+library(here)
+library(readxl)
+```
+Ahora cargamos los datos que nos proporcionó el Socio Formador. Para los datos del 2024 tenemos:
+```{r}
+calidad_aire_2024_tbl <- read_excel(here("data", "BD 2024.xlsx"))
+```
+Para los datos del 2025 tenemos:
+```{r}
+calidad_aire_2025_tbl <- read_excel(here("data", "BD 2025.xlsx"))
+```
+
+1) Comprensión de los datos:
+
+A. Dimensión del dataset. Indica la cantidad de registros y columnas
+
+```{r}
+cat('2024\nRegistros:',dim(calidad_aire_2024_tbl)[1],'Columnas:',dim(calidad_aire_2024_tbl)[2])
+```
+
+```{r}
+cat('2025\nRegistros:',dim(calidad_aire_2025_tbl)[1],'Columnas:',dim(calidad_aire_2025_tbl)[2])
+```
+
+B. Describe claramente cada una de las variables, incluyendo su nombre, descripción, tipo (categórico/numérico) y valores posibles que puede tomar, valores nulos.
+
+```{r}
+desc24 <- data.frame(
+  Tipo = sapply(calidad_aire_2024_tbl, function(x) class(x)[1]),
+  Valores_Unicos = sapply(calidad_aire_2024_tbl, function(x) length(unique(x))),
+  Valores_NA = sapply(calidad_aire_2024_tbl, function(x) sum(is.na(x)))
+)
+desc24
+```
+```{r}
+summary(calidad_aire_2024_tbl)
+```
+
+```{r}
+desc25 <- data.frame(
+  Tipo = sapply(calidad_aire_2025_tbl, function(x) class(x)[1]),
+  Valores_Unicos = sapply(calidad_aire_2025_tbl, function(x) length(unique(x))),
+  Valores_NA = sapply(calidad_aire_2025_tbl, function(x) sum(is.na(x)))
+)
+desc25
+```
+
+```{r}
+summary(calidad_aire_2025_tbl)
+```
+
+C. Verifica la calidad de los datos: valores faltantes, valores de los datos, valores espurios o erróneos.
+
+Se identificaron los siguientes valores faltantes:
+
+```{r}
+desc24_2 <- data.frame(
+  Valores_NA = sapply(calidad_aire_2024_tbl, function(x) sum(is.na(x)))
+)
+desc24_2
+```
+
+```{r}
+desc25_2 <- data.frame(
+  Valores_NA = sapply(calidad_aire_2024_tbl, function(x) sum(is.na(x)))
+)
+desc25_2
+```
+
+Se identificaron formatos erróneos en variables que deberían ser etiquetadas como "numeric" y están etiquetadas como "character
+
+```{r}
+desc25_3 <- data.frame(
+  Tipo = sapply(calidad_aire_2025_tbl, function(x) class(x)[1]),
+)
+desc25_3
+```
+
+
+
+
+
+```{r include=FALSE}
+nuevo25 <- calidad_aire_2025_tbl
+nuevo25 <- nuevo25[-1, ]
+
+for (i in 2:10) {
+  nuevo25[,][i] <- as.numeric(as.character(nuevo25[,][i]))
+}
+
+a5 <- data.frame(
+  Tipo = sapply(nuevo25, function(x) class(x)[1])
+)
+```
+
+
