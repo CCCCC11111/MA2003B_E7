@@ -75,7 +75,7 @@ desc24_2
 
 ```{r}
 desc25_2 <- data.frame(
-  Valores_NA = sapply(calidad_aire_2024_tbl, function(x) sum(is.na(x)))
+  Valores_NA = sapply(calidad_aire_2025_tbl, function(x) sum(is.na(x)))
 )
 desc25_2
 ```
@@ -84,7 +84,7 @@ Se identificaron formatos erróneos en variables que deberían ser etiquetadas c
 
 ```{r}
 desc25_3 <- data.frame(
-  Tipo = sapply(calidad_aire_2025_tbl, function(x) class(x)[1]),
+  Tipo = sapply(calidad_aire_2025_tbl, function(x) class(x)[1])
 )
 desc25_3
 ```
@@ -104,6 +104,8 @@ for (i in 2:10) {
 a5 <- data.frame(
   Tipo = sapply(nuevo25, function(x) class(x)[1])
 )
+
+a5
 ```
 
 
