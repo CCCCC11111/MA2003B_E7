@@ -14,13 +14,23 @@ library(tidyverse)
 library(here)
 library(readxl)
 ```
-Ahora cargamos los datos que nos proporcionó el Socio Formador. Para los datos del 2024 tenemos:
+
+Ahora cargamos los datos que nos proporcionó el Socio Formador. Vamos a terminar con 4 tablas totales que simplificaremos a 2, ya que nos centraremos en utilizar los datos de las zonas del centro (CE) y del norte (NTE).
+
+Para los datos del 2024 tenemos:
+
 ```{r}
-calidad_aire_2024_tbl <- read_excel(here("data", "BD 2024.xlsx"))
+calidad_aire_2024_CE_tbl <- read_excel(here("data", "BD 2024.xlsx"), sheet = 'CE')
+
+calidad_aire_2024_NTE_tbl <- read_excel(here("data", "BD 2024.xlsx"), sheet = 'NTE')
 ```
-Para los datos del 2025 tenemos:
+
+Y para los datos del 2025 tenemos:
+
 ```{r}
-calidad_aire_2025_tbl <- read_excel(here("data", "BD 2025.xlsx"))
+calidad_aire_2025_CE_tbl <- read_excel(here("data", "BD 2025.xlsx"), sheet = 'CE')
+
+calidad_aire_2025_NTE_tbl <- read_excel(here("data", "BD 2024.xlsx"), sheet = 'NTE')
 ```
 
 1) Comprensión de los datos:
@@ -28,84 +38,137 @@ calidad_aire_2025_tbl <- read_excel(here("data", "BD 2025.xlsx"))
 A. Dimensión del dataset. Indica la cantidad de registros y columnas
 
 ```{r}
-cat('2024\nRegistros:',dim(calidad_aire_2024_tbl)[1],'Columnas:',dim(calidad_aire_2024_tbl)[2])
-```
+cat('2024\nZONA CENTRO - Registros:',dim(calidad_aire_2024_CE_tbl)[1],'Columnas:',dim(calidad_aire_2024_CE_tbl)[2], '\nZONA NORTE - Registros:',dim(calidad_aire_2024_NTE_tbl)[1],'Columnas:',dim(calidad_aire_2024_NTE_tbl)[2])
 
-```{r}
-cat('2025\nRegistros:',dim(calidad_aire_2025_tbl)[1],'Columnas:',dim(calidad_aire_2025_tbl)[2])
+cat('\n2025\nZONA CENTRO - Registros:',dim(calidad_aire_2025_CE_tbl)[1],'Columnas:',dim(calidad_aire_2025_CE_tbl)[2], '\nZONA NORTE - Registros:',dim(calidad_aire_2025_NTE_tbl)[1],'Columnas:',dim(calidad_aire_2025_NTE_tbl)[2])
 ```
 
 B. Describe claramente cada una de las variables, incluyendo su nombre, descripción, tipo (categórico/numérico) y valores posibles que puede tomar, valores nulos.
 
+
 ```{r}
-desc24 <- data.frame(
-  Tipo = sapply(calidad_aire_2024_tbl, function(x) class(x)[1]),
-  Valores_Unicos = sapply(calidad_aire_2024_tbl, function(x) length(unique(x))),
-  Valores_NA = sapply(calidad_aire_2024_tbl, function(x) sum(is.na(x)))
-)
-desc24
-```
-```{r}
-summary(calidad_aire_2024_tbl)
+summary(calidad_aire_2024_CE_tbl)
+summary(calidad_aire_2024_NTE_tbl)
+
+#borra este output pq esta enorme y no se si sirva
 ```
 
 ```{r}
-desc25 <- data.frame(
-  Tipo = sapply(calidad_aire_2025_tbl, function(x) class(x)[1]),
-  Valores_Unicos = sapply(calidad_aire_2025_tbl, function(x) length(unique(x))),
-  Valores_NA = sapply(calidad_aire_2025_tbl, function(x) sum(is.na(x)))
-)
-desc25
-```
+summary(calidad_aire_2025_CE_tbl)
+summary(calidad_aire_2025_NTE_tbl)
 
-```{r}
-summary(calidad_aire_2025_tbl)
+#igual este output
 ```
 
 C. Verifica la calidad de los datos: valores faltantes, valores de los datos, valores espurios o erróneos.
 
-Se identificaron los siguientes valores faltantes:
+Se identificaron los siguientes valores faltantes para 2024:
 
 ```{r}
-desc24_2 <- data.frame(
-  Valores_NA = sapply(calidad_aire_2024_tbl, function(x) sum(is.na(x)))
+desc24_CE <- data.frame(
+  Tipo = sapply(calidad_aire_2024_CE_tbl, function(x) class(x)[1]),
+  Valores_Unicos = sapply(calidad_aire_2024_CE_tbl, function(x) length(unique(x))),
+  Valores_NA = sapply(calidad_aire_2024_CE_tbl, function(x) sum(is.na(x)))
 )
-desc24_2
+
+desc24_NTE <- data.frame(
+  Tipo = sapply(calidad_aire_2024_NTE_tbl, function(x) class(x)[1]),
+  Valores_Unicos = sapply(calidad_aire_2024_NTE_tbl, function(x) length(unique(x))),
+  Valores_NA = sapply(calidad_aire_2024_NTE_tbl, function(x) sum(is.na(x)))
+)
+
+desc24_CE
+desc24_NTE
 ```
+
+Y para 2025:
 
 ```{r}
-desc25_2 <- data.frame(
-  Valores_NA = sapply(calidad_aire_2025_tbl, function(x) sum(is.na(x)))
+desc25_CE <- data.frame(
+  Tipo = sapply(calidad_aire_2025_CE_tbl, function(x) class(x)[1]),
+  Valores_Unicos = sapply(calidad_aire_2025_CE_tbl, function(x) length(unique(x))),
+  Valores_NA = sapply(calidad_aire_2025_CE_tbl, function(x) sum(is.na(x)))
 )
-desc25_2
+
+desc25_NTE <- data.frame(
+  Tipo = sapply(calidad_aire_2025_NTE_tbl, function(x) class(x)[1]),
+  Valores_Unicos = sapply(calidad_aire_2025_NTE_tbl, function(x) length(unique(x))),
+  Valores_NA = sapply(calidad_aire_2025_NTE_tbl, function(x) sum(is.na(x)))
+)
+
+desc25_CE
+desc25_NTE
 ```
 
-Se identificaron formatos erróneos en variables que deberían ser etiquetadas como "numeric" y están etiquetadas como "character
+
+Se identificaron formatos erróneos en variables que deberían ser etiquetadas como "numeric" y están etiquetadas como "character", pero solamente dentro de la tabla centro de la base de datos del 2025 como se puede ver a continuación:
 
 ```{r}
-desc25_3 <- data.frame(
-  Tipo = sapply(calidad_aire_2025_tbl, function(x) class(x)[1])
+desc25_CE_2 <- data.frame(
+  Tipo = sapply(calidad_aire_2025_CE_tbl, function(x) class(x)[1])
 )
-desc25_3
+desc25_CE_2
 ```
 
-
-
-
+Y se realizó la correccion acorde para corregirlo:
 
 ```{r include=FALSE}
-nuevo25 <- calidad_aire_2025_tbl
-nuevo25 <- nuevo25[-1, ]
+calidad_aire_2025_CE_tbl_Corregido <- calidad_aire_2025_CE_tbl
+calidad_aire_2025_CE_tbl_Corregido <- calidad_aire_2025_CE_tbl_Corregido[-1, ]
 
 for (i in 2:10) {
-  nuevo25[,][i] <- as.numeric(as.character(nuevo25[,][i]))
+  calidad_aire_2025_CE_tbl_Corregido[[i]] <- as.numeric(as.character(calidad_aire_2025_CE_tbl_Corregido[[i]]))
 }
 
-a5 <- data.frame(
-  Tipo = sapply(nuevo25, function(x) class(x)[1])
+correccion_CE <- data.frame(
+  Tipo = sapply(calidad_aire_2025_CE_tbl_Corregido, function(x) class(x)[1])
 )
 
-a5
+correccion_CE
 ```
 
+Al igual que los tipos de datos, los nombres de la tabla central del año 2025 eran diferentes a las de las demás tablas, por lo que corregimos esto:
+
+```{r}
+names(calidad_aire_2025_CE_tbl_Corregido) <- names(calidad_aire_2024_CE_tbl)
+```
+
+Y ahora podemos conseguir nuestros 2 datasets, uno especifico para la zona norte y uno para la zona centro:
+
+```{r}
+dataset_CE <- rbind(calidad_aire_2024_CE_tbl, calidad_aire_2025_CE_tbl_Corregido)
+dataset_NTE <- rbind(calidad_aire_2024_NTE_tbl, calidad_aire_2025_NTE_tbl)
+```
+
+```{r}
+summary(dataset_CE)
+```
+
+```{r}
+desc_dataset_CE <- data.frame(
+  Valores_NA = sapply(dataset_CE, function(x) sum(is.na(x))),
+  Proporcion_NA = sapply(dataset_CE, function(x) round((mean(is.na(x)) * 100), 2))
+)
+
+desc_dataset_CE$Proporcion_NA <- paste0(desc_dataset_CE$Proporcion_NA, '%')
+desc_dataset_CE
+```
+
+```{r}
+desc_dataset_NTE <- data.frame(
+  Valores_NA = sapply(dataset_NTE, function(x) sum(is.na(x))),
+  Proporcion_NA = sapply(dataset_NTE, function(x) round((mean(is.na(x)) * 100), 2))
+)
+
+desc_dataset_NTE$Proporcion_NA <- paste0(desc_dataset_NTE$Proporcion_NA, '%')
+desc_dataset_NTE
+```
+
+```{r}
+#AI generated
+library(Amelia)
+missmap(dataset_CE, main = "Missing Values Heatmap CENTRO", col = c("yellow", "black"))
+
+missmap(dataset_NTE, main = "Missing Values Heatmap NORTE", col = c("yellow", "black"))
+```
 
