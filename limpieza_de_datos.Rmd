@@ -116,7 +116,7 @@ Y se realizó la correccion acorde para corregirlo:
 calidad_aire_2025_CE_tbl_Corregido <- calidad_aire_2025_CE_tbl
 calidad_aire_2025_CE_tbl_Corregido <- calidad_aire_2025_CE_tbl_Corregido[-1, ]
 
-for (i in 2:10) {
+for (i in 2:16) {
   calidad_aire_2025_CE_tbl_Corregido[[i]] <- as.numeric(as.character(calidad_aire_2025_CE_tbl_Corregido[[i]]))
 }
 
@@ -138,6 +138,10 @@ Y ahora podemos conseguir nuestros 2 datasets, uno especifico para la zona norte
 ```{r}
 dataset_CE <- rbind(calidad_aire_2024_CE_tbl, calidad_aire_2025_CE_tbl_Corregido)
 dataset_NTE <- rbind(calidad_aire_2024_NTE_tbl, calidad_aire_2025_NTE_tbl)
+```
+
+```{r}
+dataset_CE <- dataset_CE[-1, ]
 ```
 
 ```{r}
@@ -171,4 +175,3 @@ missmap(dataset_CE, main = "Missing Values Heatmap CENTRO", col = c("yellow", "b
 
 missmap(dataset_NTE, main = "Missing Values Heatmap NORTE", col = c("yellow", "black"))
 ```
-

@@ -1,0 +1,73 @@
+---
+title: "imputacion_de_datos"
+author: "Equipo 7"
+date: "2025-08-21"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+```{r}
+library(zoo)
+library(imputeTS)
+```
+
+```{r}
+ts_CE <- ts(dataset_CE, start = c(2024, 1), frequency = 24)
+```
+Function	Description
+na_interpolation	Missing Value Imputation by Interpolation 
+na_kalman	Missing Value Imputation by Kalman Smoothing
+na_locf	Missing Value Imputation by Last Observation Carried Forward
+na_ma	Missing Value Imputation by Weighted Moving Average
+na_mean	Missing Value Imputation by Mean Value
+na_random	Missing Value Imputation by Random Sample
+na_remove	Remove Missing Values
+na_replace	Replace Missing Values by a Defined Value
+na_seadec	Seasonally Decomposed Missing Value Imputation
+na_seasplit	Seasonally Splitted Missing Value Imputation
+
+Function	Description
+ggplot_na_distribution	Visualize Distribution of Missing Values
+ggplot_na_distribution2	Missing Values Summarized in Intervals
+ggplot_na_gapsize	Visualize Distribution of NA Gapsizes
+ggplot_na_imputations	Visualize Imputed Values
+
+```{r}
+dataset_CE_interpolado <- na_interpolation(ts_CE)
+cor(dataset_CE_interpolado[, -1], use = "pairwise.complete.obs")
+```
+
+```{r}
+dataset_CE_arima <- na_kalman(ts_CE, model = "auto.arima")
+cor(dataset_CE_arima[, -1], use = "pairwise.complete.obs")
+```
+
+```{r}
+dataset_CE_struct <- na_kalman(ts_CE, model = "StructTS")
+cor(dataset_CE_struct[, -1], use = "pairwise.complete.obs")
+```
+
+
+```{r}
+dataset_CE_LOFC <- na_locf(ts_CE)
+cor(dataset_CE_LOFC[, -1], use = "pairwise.complete.obs")
+```
+
+
+```{r}
+dataset_CE_LOFC2 <- na_locf(ts_CE, option = 'nocb')
+cor(dataset_CE_LOFC2[, -1], use = "pairwise.complete.obs")
+```
+
+```{r}
+dataset_CE_decom <- na_seadec(ts_CE, algorithm = "interpolation")
+cor(ts_CE[, -1], use = "pairwise.complete.obs")
+```
+
+```{r}
+dataset_CE_split <-na_seasplit(ts_CE, algorithm = "interpolation")
+cor(ts_CE[, -1], use = "pairwise.complete.obs")
+```
