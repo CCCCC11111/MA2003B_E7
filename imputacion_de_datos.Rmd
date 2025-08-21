@@ -68,6 +68,6 @@ cor(ts_CE[, -1], use = "pairwise.complete.obs")
 ```
 
 ```{r}
-dataset_CE_split <-na_seasplit(ts_CE, algorithm = "interpolation")
+dataset_CE_split <- na_seasplit(ts_CE, algorithm = "interpolation")
 cor(ts_CE[, -1], use = "pairwise.complete.obs")
 ```

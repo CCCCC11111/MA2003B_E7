@@ -30,7 +30,7 @@ Y para los datos del 2025 tenemos:
 ```{r}
 calidad_aire_2025_CE_tbl <- read_excel(here("data", "BD 2025.xlsx"), sheet = 'CE')
 
-calidad_aire_2025_NTE_tbl <- read_excel(here("data", "BD 2024.xlsx"), sheet = 'NTE')
+calidad_aire_2025_NTE_tbl <- read_excel(here("data", "BD 2025.xlsx"), sheet = 'NTE')
 ```
 
 1) Comprensión de los datos:
@@ -131,13 +131,16 @@ Al igual que los tipos de datos, los nombres de la tabla central del año 2025 e
 
 ```{r}
 names(calidad_aire_2025_CE_tbl_Corregido) <- names(calidad_aire_2024_CE_tbl)
+
+calidad_aire_2025_NTE_tbl_Corregido <- calidad_aire_2025_NTE_tbl
+names(calidad_aire_2025_NTE_tbl_Corregido) <- names(calidad_aire_2024_CE_tbl)
 ```
 
 Y ahora podemos conseguir nuestros 2 datasets, uno especifico para la zona norte y uno para la zona centro:
 
 ```{r}
 dataset_CE <- rbind(calidad_aire_2024_CE_tbl, calidad_aire_2025_CE_tbl_Corregido)
-dataset_NTE <- rbind(calidad_aire_2024_NTE_tbl, calidad_aire_2025_NTE_tbl)
+dataset_NTE <- rbind(calidad_aire_2024_NTE_tbl, calidad_aire_2025_NTE_tbl_Corregido)
 ```
 
 ```{r}
