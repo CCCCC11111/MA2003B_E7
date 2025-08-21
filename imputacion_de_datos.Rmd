@@ -41,13 +41,58 @@ cor(dataset_CE_interpolado[, -1], use = "pairwise.complete.obs")
 ```
 
 ```{r}
-dataset_CE_arima <- na_kalman(ts_CE, model = "auto.arima")
-cor(dataset_CE_arima[, -1], use = "pairwise.complete.obs")
+names_CE <- colnames(dataset_CE_interpolado)
+
+for (i in 1:length(names_CE)) {
+  
+  qqnorm(dataset_CE_interpolado[, i], main = paste("Q-Q Plot of", names_CE[i]))
+  
+  qqline(dataset_CE_interpolado[, i], col = "red")
+}
+```
+```{r}
+for (i in 1:length(names_CE)) {
+  
+  boxplot(dataset_CE_interpolado[, i], main = paste("Boxplot of", names_CE[i]))
+}
+```
+
+########################################
+```{r}
+pairs_CE <- pairs(dataset_CE_interpolado)
+png("pairs_CE.png")
+pairs_CE
+dev.off()
+```
+```{r}
+M <- cor(dataset_CE[, -1], use = "pairwise.complete.obs")
+image(1:ncol(M), 1:ncol(M), M, axes = FALSE, main = "Correlation Heatmap")
+axis(1, at = 1:ncol(M), labels = colnames(M), las=2, cex.axis=0.7)
+axis(2, at = 1:ncol(M), labels = colnames(M), las=2, cex.axis=0.7)
+
+```
+```{r}
+pca <- prcomp(na.omit(dataset_CE[, -1]), scale. = TRUE)
+biplot(pca)
+```
+#############################################
+```{r}
+#dataset_CE_arima <- na_kalman(ts_CE[, 1:5], model = "auto.arima")
+#cor(dataset_CE_arima[, -1], use = "pairwise.complete.obs")
 ```
 
 ```{r}
-dataset_CE_struct <- na_kalman(ts_CE, model = "StructTS")
-cor(dataset_CE_struct[, -1], use = "pairwise.complete.obs")
+#for (i in 1:length(names_CE)) {
+  
+ # qqnorm(dataset_CE_arima[, i], main = paste("Q-Q Plot of", names_CE[i]))
+  
+#  qqline(dataset_CE_arima[, i], col = "red")
+#}
+```
+
+```{r}
+#dataset_CE_struct <- na_kalman(ts_CE, model = "StructTS")
+#cor(dataset_CE_struct[, -1], use = "pairwise.complete.obs")
 ```
 
 
@@ -56,10 +101,27 @@ dataset_CE_LOFC <- na_locf(ts_CE)
 cor(dataset_CE_LOFC[, -1], use = "pairwise.complete.obs")
 ```
 
+```{r}
+for (i in 1:length(names_CE)) {
+  
+  qqnorm(dataset_CE_LOFC[, i], main = paste("Q-Q Plot of", names_CE[i]))
+  
+  qqline(dataset_CE_LOFC[, i], col = "red")
+}
+```
 
 ```{r}
 dataset_CE_LOFC2 <- na_locf(ts_CE, option = 'nocb')
 cor(dataset_CE_LOFC2[, -1], use = "pairwise.complete.obs")
+```
+
+```{r}
+for (i in 1:length(names_CE)) {
+  
+  qqnorm(dataset_CE_LOFC2[, i], main = paste("Q-Q Plot of", names_CE[i]))
+  
+  qqline(dataset_CE_LOFC2[, i], col = "red")
+}
 ```
 
 ```{r}
@@ -68,6 +130,24 @@ cor(ts_CE[, -1], use = "pairwise.complete.obs")
 ```
 
 ```{r}
+for (i in 1:length(names_CE)) {
+  
+  qqnorm(dataset_CE_decom[, i], main = paste("Q-Q Plot of", names_CE[i]))
+  
+  qqline(dataset_CE_decom[, i], col = "red")
+}
+```
+
+```{r}
 dataset_CE_split <-na_seasplit(ts_CE, algorithm = "interpolation")
 cor(ts_CE[, -1], use = "pairwise.complete.obs")
+```
+
+```{r}
+for (i in 1:length(names_CE)) {
+  
+  qqnorm(dataset_CE_split[, i], main = paste("Q-Q Plot of", names_CE[i]))
+  
+  qqline(dataset_CE_split[, i], col = "red")
+}
 ```
