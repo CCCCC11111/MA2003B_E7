@@ -1,6 +1,6 @@
 ---
 title: "Reporte de la Situación Problema"
-author: "Equpo 7"
+author: "Equipo 7"
 date: today
 format:
   docx:
@@ -9,6 +9,74 @@ format:
 ---
 
 # Etapa 1. Conociendo el negocio
+
+## Parte 1. Conociendo el negocio
+
+### I. Resumen de la revisión de bibliografía
+
+De acuerdo con airly (s.f.), el monitoreo de la calidad del aire consiste en evaluar los contaminantes presentes en la atmósfera, permitiendo identificar zonas contaminadas, supervisar normas ambientales, evaluar el impacto del cambio climático, fomentar la investigación y el desarrollo de tecnologías de control de la contaminación, y proteger la salud pública mediante la detección de áreas de riesgo y medidas preventivas \[1\].
+
+De acuerdo con la Secretaría de Medio Ambiente de Nuevo León (2025), la evaluación de la calidad del aire considera factores meteorológicos —temperatura, humedad relativa, precipitación, presión atmosférica, radiación solar y velocidad y dirección del viento— que afectan la dispersión y concentración de contaminantes, así como los contaminantes criterio PM10, PM2.5, O3, SO2, NO2 y CO, los cuales se monitorean continuamente para analizar sus efectos sobre la salud y el ambiente \[4\]. De acuerdo con la Comisión Federal para la Protección contra Riesgos Sanitarios (2025), los contaminantes se clasifican según su composición y riesgo para la salud; los contaminantes criterio tienen límites máximos permisibles y los más peligrosos son O3, óxidos de azufre y nitrógeno, CO y partículas en suspensión, por afectar los sistemas respiratorio y cardiovascular y agravar enfermedades preexistentes. Además, se incluyen contaminantes tóxicos de baja concentración pero alta persistencia y toxicidad, y contaminantes biológicos de material vivo o en descomposición, como moho, esporas y restos de insectos o piel \[2\].
+
+De acuerdo con UN environment programme (2022), los monitores de calidad del aire emplean sensores especializados para detectar contaminantes, utilizando láseres para medir densidad de partículas en un metro cúbico de aire o imágenes satelitales para registrar la energía reflejada o emitida por la superficie terrestre \[7\]. De acuerdo con Wu, Zhao, Liu y Zhang (2025), variables meteorológicas como temperatura, humedad, velocidad del viento, precipitación, presión atmosférica y radiación solar influyen en la dispersión y concentración de contaminantes; por ejemplo, el aumento de temperatura eleva PM2.5, la velocidad del viento facilita la dispersión costera, la alta humedad aumenta el ozono, la radiación solar intensifica reacciones fotoquímicas, y la precipitación remueve partículas y gases contaminantes mediante lavado atmosférico \[8\].
+
+De acuerdo con la Secretaría de Medio Ambiente de Nuevo León (2025), la NOM-172-SEMARNAT-2023 establece los lineamientos para comunicar el Índice de Calidad del Aire y los Riesgos a la Salud, considerando límites de contaminantes criterio: O3 (0.090 ppm/1 h; 0.060 ppm/8 h), CO (26.0 ppm/1 h; 9.0 ppm/8 h), SO2 (0.075 ppm/1 h; 0.04 ppm/24 h), NO2 (0.106 ppm/1 h; 0.021 ppm/anual), PM10 (60 µg/m³/24 h; 28 µg/m³/anual), PM2.5 (33 µg/m³/24 h; 10 µg/m³/anual), protegiendo la salud de la población, especialmente grupos vulnerables \[4\].
+
+De acuerdo con Sustainability Directory (2025), el monitoreo de la calidad del aire enfrenta desafíos que van de básicos a avanzados: costos, complejidad técnica y comunicación de datos; a nivel intermedio se requieren redes eficientes, calidad de datos e integración con políticas y ciudadanía; y a nivel académico se necesita expandir tecnologías, mejorar interpretación de datos y comprender la relación entre contaminación y sostenibilidad, mediante investigación, colaboración interdisciplinaria y enfoques estratégicos \[6\].
+
+De acuerdo con la Secretaría de Medio Ambiente de Nuevo León (2024), el Sistema Integral de Monitoreo Ambiental (SIMA), inaugurado el 20 de noviembre de 1992, ha pasado de cinco estaciones iniciales a 15 fijas en 11 municipios y dos móviles; operado por ingenieros especializados, garantiza datos confiables, permite anticipar episodios de contaminación, alertar a la población y evaluar políticas ambientales, reafirmando el compromiso de proteger el medio ambiente y la salud pública, promoviendo un Nuevo León con aire más limpio y saludable \[3\].
+
+### II. Descripción del problema específico (preguntas de investigación u objetivo del proyecto)
+
+La contaminación atmosférica es uno de los principales retos ambientales y de salud pública en el mundo moderno. Una de sus dificultades es que los niveles de concentración no se presentan uniformemente a través de un área, sino que sus niveles varían con la ubicación, el tiempo, las condiciones climáticas y las fuentes emisoras de contaminantes presentes en cada zona. Esta variabilidad crea la necesidad de un análisis detallado de las diferentes distribuciones de contaminantes en cada zona a través del tiempo para poder identificar concretamente tendencias y diferencias significativas.
+
+Partiendo del reto proporcionado por la organización socio formadora: “Comprender la naturaleza de los contaminantes que afectan la calidad del aire y cómo interactúan con los factores ambientales” se decidió definir una línea de investigación que dé paso a un análisis centrado en las diferencias que existen entre zonas. Tomando en cuenta la naturaleza de los diferentes contaminantes y su relación con los factores ambientales, se determinó el siguiente objetivo para el proyecto: “Análisis de la distribución de concentraciones de contaminantes en diferentes estaciones meteorológicas”.
+
+Para profundizar en el nuevo objetivo escogido para el reto, su finalidad es identificar variaciones espaciales y temporales que permitan comprender mejor el comportamiento de la contaminación atmosférica y contribuir a la toma de decisiones en materia ambiental y de salud pública. Se escogió este objetivo con el propósito de poder, a través de un análisis estadístico, extraer nueva información de valor en la toma de decisiones futuras de tal manera que se pueda producir un cambio significativo al medio ambiente de una manera agilizada y fundamentada.
+
+### III. Objetivos (se definen con base en las preguntas de investigación u objetivo del proyecto)
+
+El objetivo del proyecto es analizar la distribución de concentraciones de contaminantes en diferentes estaciones meteorológicas. Para esto, se buscará establecer relaciones entre los diferentes factores que influyen en el estado del medio ambiente, siempre considerando el tiempo que ha pasado y los cambios que ese tiempo implica en el ambiente. Este objetivo puede descomponerse en diferentes etapas para establecer una metodología a seguir:
+
+Primero, para cumplir con el objetivo principal, se deben recopilar y organizar los datos relevantes. Luego, se deben de comparar y contrastar los diferentes niveles de contaminantes presentes entre estaciones e identificar diferentes diferencias significativas. En este caso, se decidió un enfoque en las estaciones de Centro y Norte entre los años 2024 y 2025 para hacer un análisis más completo. Después hay que, a través de la modelación estadística, identificar patrones temporales en los niveles de contaminantes. Establecer tendencias en los datos exitosamente permitirá realizar varios análisis predictivos que informen futuras decisiones. 
+
+Para finalizar este proceso, lo último que se debe de realizar es un análisis descriptivo de la nueva información obtenida a través de la realización de gráficos y estadísticas. Estos elementos facilitan la comunicación de los hallazgos y el intercambio de información con la organización socio formadora. A partir de ésto es posible llevar a cabo interpretaciones y conclusiones que sirvan como base para recomendaciones y futuros planes de acción de gestión ambiental y salud pública.
+
+### IV. Justificación de los objetivos
+
+El análisis de la distribución de contaminantes atmosféricos en diferentes estaciones meteorológicas es de suma importancia gracias a la creciente preocupación por los efectos de la contaminación en la salud humana, el medio ambiente y la calidad de vida en general. Los contaminantes no se dispersan de manera uniforme, sino que su concentración depende de factores locales como las fuentes de emisión, la topografía de la zona y las incontables variables meteorológicas presentes. Por ello, resulta indispensable establecer un estudio que permita identificar cómo y por qué varían los niveles de contaminación en distintos puntos de observación. Con la información obtenida de este estudio, se puede comprender el problema en diferentes áreas, así como entender y predecir los lugares y momentos en los que la exposición a contaminantes puede ser más riesgosa y planificar de acuerdo a ello. Esto resulta en el diseño de estrategias de gestión ambientales y políticas públicas más informadas que tendrán el potencial de tener un mayor impacto positivo mediante la reducción de la contaminación y la protección de la salud pública.
+
+### V. Descripción de las fuentes de información (datos)
+
+De acuerdo con la Secretaría de Medio Ambiente de Nuevo León (s.f.), la información empleada proviene del Sistema Integral de Monitoreo Ambiental (SIMA) del Gobierno de Nuevo León, responsable de recopilar y difundir datos meteorológicos y de contaminantes atmosféricos mediante una red de estaciones fijas y móviles ubicadas en la Zona Metropolitana de Monterrey y municipios aledaños. Los registros abarcan el periodo 2020-2025 y están organizados por año y estación, integrando tanto mediciones individuales de contaminantes como series conjuntas que incluyen parámetros meteorológicos y atmosféricos.
+
+La red de monitoreo está conformada por 15 estaciones fijas distribuidas estratégicamente en diferentes municipios: “CE” CENTRO (Monterrey), “NTE” NORTE (Escobedo), “NTE2” NORTE 2 (San Nicolás), “SUR” SUR (Monterrey), “NE” NORESTE (San Nicolás), “NE2” NORESTE 2 (Apodaca), “NE3” NORESTE 3 (Pesquería), “NO” NOROESTE (Monterrey), “NO2” NOROESTE 2 (García), “NO3” NOROESTE 3 (García), “SE” SURESTE (Guadalupe), “SE2” SURESTE 2 (Juárez), “SE3” SURESTE 3 (Cadereyta), “SO” SUROESTE (Santa Catarina) y “SO2” SUROESTE 2 (San Pedro).
+
+Los contaminantes monitoreados son: PM10 (partículas menores a 10 µm), PM2.5 (partículas menores a 2.5 µm), O3 (ozono), SO2 (dióxido de azufre), NO2 (dióxido de nitrógeno), CO (monóxido de carbono), NO (monóxido de nitrógeno) y NOX (suma de NO + NO2). Sus concentraciones se reportan en unidades como µg/m³, ppb o ppm, según corresponda.
+
+De manera complementaria, se registran parámetros meteorológicos fundamentales para el análisis de la calidad del aire: temperatura (ºC), humedad relativa (%), radiación solar (kW/m²), precipitación (mm/h), presión atmosférica (mm Hg), velocidad del viento (km/h) y dirección del viento (º). Estos indicadores permiten estudiar la dispersión, acumulación y transformación de contaminantes en la atmósfera, fortaleciendo la evaluación integral de la calidad ambiental en la región [5].
+
+### VI. Impacto social principal
+
+El análisis de la calidad del aire en Nuevo León tiene un impacto social significativo, ya que permite abordar uno de los principales factores asociados con la muerte prematura a nivel mundial: la contaminación atmosférica. A través de la identificación de las zonas más contaminadas, la supervisión del cumplimiento de la normatividad ambiental y la evaluación de los efectos del cambio climático, se convierte en una herramienta esencial para proteger la salud de la población. Además, impulsa la investigación científica y el desarrollo de tecnologías orientadas al control de contaminantes, al tiempo que facilita la implementación de medidas preventivas en áreas de riesgo. En conjunto, estas acciones fortalecen la capacidad de la sociedad para enfrentar los desafíos ambientales y promover un entorno más seguro y saludable.
+
+### VII. Fuentes bibliográficas y de datos
+
+[1] airly. (s.f.). 5 Benefits of Air Quality Monitoring. airly. https://airly.org/en/5-benefits-of-air-quality-monitoring/
+
+[2] Comisión Federal para la Protección contra Riesgos Sanitarios. (2025). Clasificación de los contaminantes del aire ambiente. Comisión Federal para la Protección contra Riesgos Sanitarios. https://www.gob.mx/cofepris/acciones-y-programas/2-clasificacion-de-los-contaminantes-del-aire-ambiente
+
+[3] Secretaría de Medio Ambiente de Nuevo León. (2024). El Sistema Integral de Monitoreo Ambiental (SIMA) del Gobierno de Nuevo León celebra hoy su 32 aniversario. Secretaría de Medio Ambiente de Nuevo León. https://www.facebook.com/watch/?v=847351737320355
+
+[4] Secretaría de Medio Ambiente de Nuevo León. (2025). RED DE MONITOREO Y MANEJO DE DATOS DE CALIDAD DEL AIRE. Secretaría de Medio Ambiente de Nuevo León.
+
+[5] Secretaría de Medio Ambiente de Nuevo León. (s.f.). Sistema Integral de Monitoreo Ambiental [SIMA] Nuevo León. Secretaría de Medio Ambiente de Nuevo León. https://aire.nl.gob.mx/
+
+[6] Sustainability Directory. (2025). What Are Air Quality Monitoring Challenges? Sustainability Directory. https://pollution.sustainability-directory.com/question/what-are-air-quality-monitoring-challenges/
+
+[7] UN environment programme. (2022). How is air quality measured? UN environment programme. https://www.unep.org/news-and-stories/story/how-air-quality-measured
+
+[8] Wu B., Zhao S., Liu Y., & Zhang C. (2025). Do meteorological variables impact air quality differently across urbanization gradients? A case study of Kaohsiung, Taiwan, China. ScienceDirect. https://www.sciencedirect.com/science/article/pii/S240584402500074X
 
 Para esta primera etapa, empezaremos por cargar las librerías que necesitamos y establecemos algunas opciones de configuración:
 
@@ -20,19 +88,21 @@ library(readxl)
 
 options(scipen = 999)
 ```
+
 Ahora cargamos los datos que nos proporcionó el Socio Formador. Para los datos del 2024 tenemos:
+
 ```{r}
 calidad_aire_2024_tbl <- read_excel(here("data", "BD 2024.xlsx")) %>%
   glimpse()
 ```
+
 Para los datos del 2025 tenemos:
+
 ```{r}
 calidad_aire_2025_tbl <- read_excel(here("data", "BD 2025.xlsx")) %>%
   glimpse()
 ```
-1) Comprensión de los datos:
 
-Dimensión del dataset. Indica cantidad de registros y columnas
-Describe claramente cada una de las variables, incluyendo su nombre, descripción, tipo (categórico/Numérico) y valores posibles que puede tomar, valores nulos.
-Verifica la calidad de los datos: valores faltantes, valores de los datos, valores espurios o erróneos
+1)  Comprensión de los datos:
 
+Dimensión del dataset. Indica cantidad de registros y columnas Describe claramente cada una de las variables, incluyendo su nombre, descripción, tipo (categórico/Numérico) y valores posibles que puede tomar, valores nulos. Verifica la calidad de los datos: valores faltantes, valores de los datos, valores espurios o erróneos
