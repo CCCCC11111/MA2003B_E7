@@ -71,3 +71,13 @@ cor(ts_CE[, -1], use = "pairwise.complete.obs")
 dataset_CE_split <- na_seasplit(ts_CE, algorithm = "interpolation")
 cor(ts_CE[, -1], use = "pairwise.complete.obs")
 ```
+
+```{r}
+for (i in 1:length(names_CE)) {
+  
+  qqnorm(dataset_CE_split[, i], main = paste("Q-Q Plot of", names_CE[i]))
+  
+  qqline(dataset_CE_split[, i], col = "red")
+}
+```
+test
