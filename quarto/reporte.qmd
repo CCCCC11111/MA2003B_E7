@@ -60,7 +60,33 @@ De manera complementaria, se registran parámetros meteorológicos fundamentales
 
 El análisis de la calidad del aire en Nuevo León tiene un impacto social significativo, ya que permite abordar uno de los principales factores asociados con la muerte prematura a nivel mundial: la contaminación atmosférica. A través de la identificación de las zonas más contaminadas, la supervisión del cumplimiento de la normatividad ambiental y la evaluación de los efectos del cambio climático, se convierte en una herramienta esencial para proteger la salud de la población. Además, impulsa la investigación científica y el desarrollo de tecnologías orientadas al control de contaminantes, al tiempo que facilita la implementación de medidas preventivas en áreas de riesgo. En conjunto, estas acciones fortalecen la capacidad de la sociedad para enfrentar los desafíos ambientales y promover un entorno más seguro y saludable.
 
-### VII. Fuentes bibliográficas y de datos
+## Parte 2. Comprensión y preparación de los datos
+
+### I. Indica el número de variables y el tamaño del dataset
+
+Tomando en cuenta que se decidió enfocar este proyecto en las zonas meteorológicas “CE - Centro”, la cual está ubicada en el municipio de Monterrey, y “NTE - Norte”, la cual está ubicada en el municipio de Escobedo, durante los años 2024 y 2025, se inició con dos conjuntos de datos, éstas siendo “Datos meteorológicos y de contaminantes 2024” y “Datos meteorológicos y de contaminantes 2025”, sin embargo, cada una de estos dos subconjuntos de datos contiene 15 subconjuntos de datos, 1 subconjunto de datos para cada una de las 15 zonas meteorológicas, por lo tanto se inició con 4 subconjuntos de datos, estos siendo “Datos meteorológicos y de contaminantes 2024 - CE”, “Datos meteorológicos y de contaminantes 2024 - NTE”, “Datos meteorológicos y de contaminantes 2025 - CE”, y “Datos meteorológicos y de contaminantes 2025 - NTE”.
+
+En primer lugar, el subconjunto de datos “Datos meteorológicos y de contaminantes 2024 - CE” contiene 8,784 registros y 16 variables, éstas siendo “Fecha y hora”, “CO (ppm)”, “NO (ppb)”, “NO2 (ppb)”, “NOX (ppb)”, “O3 (ppb)”, “PM10 (ug/m3)”, “PM2.5 (ug/m3)”, “PRS (mmHg)”, “RAINF (mm/h)”, “RH (%)”, “SO2 (ppb)”, “SR (kW/m2)”, “TOUT (ºC)”, “WSR (km/h)”, y “WDR (azimutal)”. Tomando esto en cuenta, el tamaño de este subconjunto de datos es igual a 140,544.
+
+En segundo lugar, el subconjunto de datos “Datos meteorológicos y de contaminantes 2024 - NTE” contiene 8,782 registros y 16 variables, éstas siendo las mismas que se mencionaron anteriormente. Tomando esto en cuenta, el tamaño de este subconjunto de datos es igual a 140,512.
+
+En tercer lugar, el subconjunto de datos “Datos meteorológicos y de contaminantes 2025 - CE” contiene 4,345 registros y 16 variables, éstas siendo las mismas que se mencionaron anteriormente. Tomando esto en cuenta, el tamaño de este subconjunto de datos es igual a 69,520.
+
+En último lugar, el subconjunto de datos “Datos meteorológicos y de contaminantes 2025 - NTE” contiene 4,345 registros y 16 variables, éstas siendo las mismas que se mencionaron anteriormente. Tomando esto en cuenta, el tamaño de este subconjunto de datos es igual a 69,520.
+
+Ya habiendo llevado a cabo el proceso de limpieza de los datos, en donde se llevó a cabo, principalmente, la imputación de datos, se finalizó con dos conjuntos de datos, el primero conteniendo, en uno mismo conjunto de datos, los subconjuntos de datos “Datos meteorológicos y de contaminantes 2024 - CE” y “Datos meteorológicos y de contaminantes 2025 - CE” y el segundo conteniendo, en un mismo conjunto de datos, los subconjuntos de datos “Datos meteorológicos y de contaminantes 2024 - NTE” y “Datos meteorológicos y de contaminantes 2025 - NTE”. 
+
+El primer conjunto de datos contiene 13,128 registros y 16 variables, éstas siendo “Fecha y hora”, “CO (ppm)”, “NO (ppb)”, “NO2 (ppb)”, “NOX (ppb)”, “O3 (ppb)”, “PM10 (ug/m3)”, “PM2.5 (ug/m3)”, “PRS (mmHg)”, “RAINF (mm/h)”, “RH (%)”, “SO2 (ppb)”, “SR (kW/m2)”, “TOUT (ºC)”, “WSR (km/h)”, y “WDR (azimutal)”. Tomando esto en cuenta, el tamaño de este conjunto de datos es igual a 210,048.
+
+El segundo conjunto de datos contiene 13,128 registros y 16 variables, éstas siendo las mismas que se mencionaron anteriormente. Tomando esto en cuenta, el tamaño de este conjunto de datos es igual a 210,048.
+
+#### II. Describe las variables que consideras importantes y su relevancia para cumplir con el objetivo del proyecto.
+
+Las variables que se consideraron de mayor importancia para el análisis fueron la fecha y las correspondientes a los diferentes contaminantes presentes en la atmósfera. Estas variables son PM10, PM2.5, O3, SO2, NO2, CO, NO y Nox. Cada una de estas variables representa las diferentes concentraciones de contaminantes presentes en diferentes tiempos, medidos en partes por millón (ppm), partes por billón (ppb) y microgramos por metro cúbico ($\mu$g/m$^3$) respectivamente. 
+
+Estas variables permiten realizar un análisis de qué tan contaminada se encuentra una cierta zona y por lo tanto se puede obtener información sobre el impacto en el medio ambiente y la salud pública, lo cual es el enfoque de nuestro análisis. Las variables que no corresponden a factores contaminantes, es decir, TOUT (temperatura), RH (humedad relativa), SR (radiación solar), RAINF (precipitación), PRS (presión atmosférica), WSR (velocidad del viento) y WDR (dirección del viento) fueron preservadas en la base de datos para no limitar un futuro análisis en caso de que alguna de estas variables demostrara ser significativa.
+
+### Fuentes bibliográficas y de datos
 
 \[1\] airly. (s.f.). 5 Benefits of Air Quality Monitoring. airly. https://airly.org/en/5-benefits-of-air-quality-monitoring/
 
@@ -81,27 +107,3 @@ El análisis de la calidad del aire en Nuevo León tiene un impacto social signi
 \[9\] UN environment programme. (2022). How is air quality measured? UN environment programme. https://www.unep.org/news-and-stories/story/how-air-quality-measured
 
 \[10\] Wu B., Zhao S., Liu Y., & Zhang C. (2025). Do meteorological variables impact air quality differently across urbanization gradients? A case study of Kaohsiung, Taiwan, China. ScienceDirect. https://www.sciencedirect.com/science/article/pii/S240584402500074X
-
-1. Indica el número de variables y el tamaño del dataset
-
-Tomando en cuenta que se decidió enfocar este proyecto en las zonas meteorológicas “CE - Centro”, la cual está ubicada en el municipio de Monterrey, y “NTE - Norte”, la cual está ubicada en el municipio de Escobedo, durante los años 2024 y 2025, se inició con dos conjuntos de datos, éstas siendo “Datos meteorológicos y de contaminantes 2024” y “Datos meteorológicos y de contaminantes 2025”, sin embargo, cada una de estos dos subconjuntos de datos contiene 15 subconjuntos de datos, 1 subconjunto de datos para cada una de las 15 zonas meteorológicas, por lo tanto se inició con 4 subconjuntos de datos, estos siendo “Datos meteorológicos y de contaminantes 2024 - CE”, “Datos meteorológicos y de contaminantes 2024 - NTE”, “Datos meteorológicos y de contaminantes 2025 - CE”, y “Datos meteorológicos y de contaminantes 2025 - NTE”.
-
-En primer lugar, el subconjunto de datos “Datos meteorológicos y de contaminantes 2024 - CE” contiene 8,784 registros y 16 variables, éstas siendo “Fecha y hora”, “CO (ppm)”, “NO (ppb)”, “NO2 (ppb)”, “NOX (ppb)”, “O3 (ppb)”, “PM10 (ug/m3)”, “PM2.5 (ug/m3)”, “PRS (mmHg)”, “RAINF (mm/h)”, “RH (%)”, “SO2 (ppb)”, “SR (kW/m2)”, “TOUT (ºC)”, “WSR (km/h)”, y “WDR (azimutal)”. Tomando esto en cuenta, el tamaño de este subconjunto de datos es igual a 140,544.
-
-En segundo lugar, el subconjunto de datos “Datos meteorológicos y de contaminantes 2024 - NTE” contiene 8,782 registros y 16 variables, éstas siendo las mismas que se mencionaron anteriormente. Tomando esto en cuenta, el tamaño de este subconjunto de datos es igual a 140,512.
-
-En tercer lugar, el subconjunto de datos “Datos meteorológicos y de contaminantes 2025 - CE” contiene 4,345 registros y 16 variables, éstas siendo las mismas que se mencionaron anteriormente. Tomando esto en cuenta, el tamaño de este subconjunto de datos es igual a 69,520.
-
-En último lugar, el subconjunto de datos “Datos meteorológicos y de contaminantes 2025 - NTE” contiene 4,345 registros y 16 variables, éstas siendo las mismas que se mencionaron anteriormente. Tomando esto en cuenta, el tamaño de este subconjunto de datos es igual a 69,520.
-
-Ya habiendo llevado a cabo el proceso de limpieza de los datos, en donde se llevó a cabo, principalmente, la imputación de datos, se finalizó con dos conjuntos de datos, el primero conteniendo, en uno mismo conjunto de datos, los subconjuntos de datos “Datos meteorológicos y de contaminantes 2024 - CE” y “Datos meteorológicos y de contaminantes 2025 - CE” y el segundo conteniendo, en un mismo conjunto de datos, los subconjuntos de datos “Datos meteorológicos y de contaminantes 2024 - NTE” y “Datos meteorológicos y de contaminantes 2025 - NTE”. 
-
-El primer conjunto de datos contiene 13,128 registros y 16 variables, éstas siendo “Fecha y hora”, “CO (ppm)”, “NO (ppb)”, “NO2 (ppb)”, “NOX (ppb)”, “O3 (ppb)”, “PM10 (ug/m3)”, “PM2.5 (ug/m3)”, “PRS (mmHg)”, “RAINF (mm/h)”, “RH (%)”, “SO2 (ppb)”, “SR (kW/m2)”, “TOUT (ºC)”, “WSR (km/h)”, y “WDR (azimutal)”. Tomando esto en cuenta, el tamaño de este conjunto de datos es igual a 210,048.
-
-El segundo conjunto de datos contiene 13,128 registros y 16 variables, éstas siendo las mismas que se mencionaron anteriormente. Tomando esto en cuenta, el tamaño de este conjunto de datos es igual a 210,048.
-
-2.  Describe las variables que consideras importantes y su relevancia para cumplir con el objetivo del proyecto.
-
-Las variables que se consideraron de mayor importancia para el análisis fueron la fecha y las correspondientes a los diferentes contaminantes presentes en la atmósfera. Estas variables son PM10, PM2.5, O3, SO2, NO2, CO, NO y Nox. Cada una de estas variables representa las diferentes concentraciones de contaminantes presentes en diferentes tiempos, medidos en partes por millón (ppm), partes por billón (ppb) y microgramos por metro cúbico ($\mu$g/m$^3$) respectivamente. 
-
-Estas variables permiten realizar un análisis de qué tan contaminada se encuentra una cierta zona y por lo tanto se puede obtener información sobre el impacto en el medio ambiente y la salud pública, lo cual es el enfoque de nuestro análisis. Las variables que no corresponden a factores contaminantes, es decir, TOUT (temperatura), RH (humedad relativa), SR (radiación solar), RAINF (precipitación), PRS (presión atmosférica), WSR (velocidad del viento) y WDR (dirección del viento) fueron preservadas en la base de datos para no limitar un futuro análisis en caso de que alguna de estas variables demostrara ser significativa.
