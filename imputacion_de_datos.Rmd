@@ -200,3 +200,11 @@ Tras realizar esto, sigue el elegir el método de imputación que le haga mejor 
 En cuanto a transformación de los datos, decidimos que no era necesario, pues el binning es para convertir variables numéricas a categóricas y nuestro objetivo no está relacionado a eso; la normalización y/o escalamiento nos perjudica a nosotros en cuanto a la interpretación de la base de datos, y por la naturaleza de como los objetos Time Series convierten las fechas a un valor numérico, separar la fecha y la hora en atributos diferentes le perjudicaria a la cronología de la serie de tiempo.
 
 Y finalmente, tras platicar con el socio-formador, descubrimos que es normal que de una hora a otra haya un cambio drástico en los valores de los contaminantes, y puede saltar de ceros a cientos entonces tenemos incertidumbre en cuanto a la forma en la que podríamos tratar con los outliers, ya que también el remover valores daña a la cronología de nuestra serie.
+
+Momentaneamente tomaremos el método de imputación LOFC y luego elegiremos el mejor.
+
+```{r}
+write.csv(dataset_CE_LOFC, "DATASET_CENTRO_LIMPIO")
+
+write.csv(dataset_NTE_LOFC, "DATASET_NORTE_LIMPIO")
+```
