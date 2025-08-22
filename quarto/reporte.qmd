@@ -97,7 +97,8 @@ En último lugar, el subconjunto de datos “Datos meteorológicos y de contamin
 Ya habiendo llevado a cabo el proceso de limpieza de los datos, en donde se llevó a cabo, principalmente, la imputación de datos, se finalizó con dos conjuntos de datos, el primero conteniendo, en uno mismo conjunto de datos, los subconjuntos de datos “Datos meteorológicos y de contaminantes 2024 - CE” y “Datos meteorológicos y de contaminantes 2025 - CE” y el segundo conteniendo, en un mismo conjunto de datos, los subconjuntos de datos “Datos meteorológicos y de contaminantes 2024 - NTE” y “Datos meteorológicos y de contaminantes 2025 - NTE”. 
 
 El primer conjunto de datos contiene 13,128 registros y 16 variables, éstas siendo “Fecha y hora”, “CO (ppm)”, “NO (ppb)”, “NO2 (ppb)”, “NOX (ppb)”, “O3 (ppb)”, “PM10 (ug/m3)”, “PM2.5 (ug/m3)”, “PRS (mmHg)”, “RAINF (mm/h)”, “RH (%)”, “SO2 (ppb)”, “SR (kW/m2)”, “TOUT (ºC)”, “WSR (km/h)”, y “WDR (azimutal)”. Tomando esto en cuenta, el tamaño de este conjunto de datos es igual a 210,048.
-	El segundo conjunto de datos contiene 13,128 registros y 16 variables, éstas siendo las mismas que se mencionaron anteriormente. Tomando esto en cuenta, el tamaño de este conjunto de datos es igual a 210,048.
+
+El segundo conjunto de datos contiene 13,128 registros y 16 variables, éstas siendo las mismas que se mencionaron anteriormente. Tomando esto en cuenta, el tamaño de este conjunto de datos es igual a 210,048.
 
 2.  Describe las variables que consideras importantes y su relevancia para cumplir con el objetivo del proyecto.
 
