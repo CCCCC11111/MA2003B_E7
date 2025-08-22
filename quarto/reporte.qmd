@@ -18,11 +18,11 @@ De acuerdo con airly (s.f.), el monitoreo de la calidad del aire consiste en eva
 
 De acuerdo con la Secretaría de Medio Ambiente de Nuevo León (2025), la evaluación de la calidad del aire considera factores meteorológicos —temperatura, humedad relativa, precipitación, presión atmosférica, radiación solar y velocidad y dirección del viento— que afectan la dispersión y concentración de contaminantes, así como los contaminantes criterio PM10, PM2.5, O3, SO2, NO2 y CO, los cuales se monitorean continuamente para analizar sus efectos sobre la salud y el ambiente \[4\]. De acuerdo con la Comisión Federal para la Protección contra Riesgos Sanitarios (2025), los contaminantes se clasifican según su composición y riesgo para la salud; los contaminantes criterio tienen límites máximos permisibles y los más peligrosos son O3, óxidos de azufre y nitrógeno, CO y partículas en suspensión, por afectar los sistemas respiratorio y cardiovascular y agravar enfermedades preexistentes. Además, se incluyen contaminantes tóxicos de baja concentración pero alta persistencia y toxicidad, y contaminantes biológicos de material vivo o en descomposición, como moho, esporas y restos de insectos o piel \[2\].
 
-De acuerdo con UN environment programme (2022), los monitores de calidad del aire emplean sensores especializados para detectar contaminantes, utilizando láseres para medir densidad de partículas en un metro cúbico de aire o imágenes satelitales para registrar la energía reflejada o emitida por la superficie terrestre \[7\]. De acuerdo con Wu, Zhao, Liu y Zhang (2025), variables meteorológicas como temperatura, humedad, velocidad del viento, precipitación, presión atmosférica y radiación solar influyen en la dispersión y concentración de contaminantes; por ejemplo, el aumento de temperatura eleva PM2.5, la velocidad del viento facilita la dispersión costera, la alta humedad aumenta el ozono, la radiación solar intensifica reacciones fotoquímicas, y la precipitación remueve partículas y gases contaminantes mediante lavado atmosférico \[8\].
+De acuerdo con UN environment programme (2022), los monitores de calidad del aire emplean sensores especializados para detectar contaminantes, utilizando láseres para medir densidad de partículas en un metro cúbico de aire o imágenes satelitales para registrar la energía reflejada o emitida por la superficie terrestre \[9\]. De acuerdo con Wu, Zhao, Liu y Zhang (2025), variables meteorológicas como temperatura, humedad, velocidad del viento, precipitación, presión atmosférica y radiación solar influyen en la dispersión y concentración de contaminantes; por ejemplo, el aumento de temperatura eleva PM2.5, la velocidad del viento facilita la dispersión costera, la alta humedad aumenta el ozono, la radiación solar intensifica reacciones fotoquímicas, y la precipitación remueve partículas y gases contaminantes mediante lavado atmosférico \[10\].
 
 De acuerdo con la Secretaría de Medio Ambiente de Nuevo León (2025), la NOM-172-SEMARNAT-2023 establece los lineamientos para comunicar el Índice de Calidad del Aire y los Riesgos a la Salud, considerando límites de contaminantes criterio: O3 (0.090 ppm/1 h; 0.060 ppm/8 h), CO (26.0 ppm/1 h; 9.0 ppm/8 h), SO2 (0.075 ppm/1 h; 0.04 ppm/24 h), NO2 (0.106 ppm/1 h; 0.021 ppm/anual), PM10 (60 µg/m³/24 h; 28 µg/m³/anual), PM2.5 (33 µg/m³/24 h; 10 µg/m³/anual), protegiendo la salud de la población, especialmente grupos vulnerables \[4\].
 
-De acuerdo con Sustainability Directory (2025), el monitoreo de la calidad del aire enfrenta desafíos que van de básicos a avanzados: costos, complejidad técnica y comunicación de datos; a nivel intermedio se requieren redes eficientes, calidad de datos e integración con políticas y ciudadanía; y a nivel académico se necesita expandir tecnologías, mejorar interpretación de datos y comprender la relación entre contaminación y sostenibilidad, mediante investigación, colaboración interdisciplinaria y enfoques estratégicos \[6\].
+De acuerdo con Sustainability Directory (2025), el monitoreo de la calidad del aire enfrenta desafíos que van de básicos a avanzados: costos, complejidad técnica y comunicación de datos; a nivel intermedio se requieren redes eficientes, calidad de datos e integración con políticas y ciudadanía; y a nivel académico se necesita expandir tecnologías, mejorar interpretación de datos y comprender la relación entre contaminación y sostenibilidad, mediante investigación, colaboración interdisciplinaria y enfoques estratégicos \[8\].
 
 De acuerdo con la Secretaría de Medio Ambiente de Nuevo León (2024), el Sistema Integral de Monitoreo Ambiental (SIMA), inaugurado el 20 de noviembre de 1992, ha pasado de cinco estaciones iniciales a 15 fijas en 11 municipios y dos móviles; operado por ingenieros especializados, garantiza datos confiables, permite anticipar episodios de contaminación, alertar a la población y evaluar políticas ambientales, reafirmando el compromiso de proteger el medio ambiente y la salud pública, promoviendo un Nuevo León con aire más limpio y saludable \[3\].
 
@@ -38,7 +38,7 @@ Para profundizar en el nuevo objetivo escogido para el reto, su finalidad es ide
 
 El objetivo del proyecto es analizar la distribución de concentraciones de contaminantes en diferentes estaciones meteorológicas. Para esto, se buscará establecer relaciones entre los diferentes factores que influyen en el estado del medio ambiente, siempre considerando el tiempo que ha pasado y los cambios que ese tiempo implica en el ambiente. Este objetivo puede descomponerse en diferentes etapas para establecer una metodología a seguir:
 
-Primero, para cumplir con el objetivo principal, se deben recopilar y organizar los datos relevantes. Luego, se deben de comparar y contrastar los diferentes niveles de contaminantes presentes entre estaciones e identificar diferentes diferencias significativas. En este caso, se decidió un enfoque en las estaciones de Centro y Norte entre los años 2024 y 2025 para hacer un análisis más completo. Después hay que, a través de la modelación estadística, identificar patrones temporales en los niveles de contaminantes. Establecer tendencias en los datos exitosamente permitirá realizar varios análisis predictivos que informen futuras decisiones. 
+Primero, para cumplir con el objetivo principal, se deben recopilar y organizar los datos relevantes. Luego, se deben de comparar y contrastar los diferentes niveles de contaminantes presentes entre estaciones e identificar diferentes diferencias significativas. En este caso, se decidió un enfoque en las estaciones de Centro y Norte entre los años 2024 y 2025 para hacer un análisis más completo. Después hay que, a través de la modelación estadística, identificar patrones temporales en los niveles de contaminantes. Establecer tendencias en los datos exitosamente permitirá realizar varios análisis predictivos que informen futuras decisiones.
 
 Para finalizar este proceso, lo último que se debe de realizar es un análisis descriptivo de la nueva información obtenida a través de la realización de gráficos y estadísticas. Estos elementos facilitan la comunicación de los hallazgos y el intercambio de información con la organización socio formadora. A partir de ésto es posible llevar a cabo interpretaciones y conclusiones que sirvan como base para recomendaciones y futuros planes de acción de gestión ambiental y salud pública.
 
@@ -54,55 +54,64 @@ La red de monitoreo está conformada por 15 estaciones fijas distribuidas estrat
 
 Los contaminantes monitoreados son: PM10 (partículas menores a 10 µm), PM2.5 (partículas menores a 2.5 µm), O3 (ozono), SO2 (dióxido de azufre), NO2 (dióxido de nitrógeno), CO (monóxido de carbono), NO (monóxido de nitrógeno) y NOX (suma de NO + NO2). Sus concentraciones se reportan en unidades como µg/m³, ppb o ppm, según corresponda.
 
-De manera complementaria, se registran parámetros meteorológicos fundamentales para el análisis de la calidad del aire: temperatura (ºC), humedad relativa (%), radiación solar (kW/m²), precipitación (mm/h), presión atmosférica (mm Hg), velocidad del viento (km/h) y dirección del viento (º). Estos indicadores permiten estudiar la dispersión, acumulación y transformación de contaminantes en la atmósfera, fortaleciendo la evaluación integral de la calidad ambiental en la región [5].
+De manera complementaria, se registran parámetros meteorológicos fundamentales para el análisis de la calidad del aire: temperatura (ºC), humedad relativa (%), radiación solar (kW/m²), precipitación (mm/h), presión atmosférica (mm Hg), velocidad del viento (km/h) y dirección del viento (º). Estos indicadores permiten estudiar la dispersión, acumulación y transformación de contaminantes en la atmósfera, fortaleciendo la evaluación integral de la calidad ambiental en la región \[5\].
 
 ### VI. Impacto social principal
 
 El análisis de la calidad del aire en Nuevo León tiene un impacto social significativo, ya que permite abordar uno de los principales factores asociados con la muerte prematura a nivel mundial: la contaminación atmosférica. A través de la identificación de las zonas más contaminadas, la supervisión del cumplimiento de la normatividad ambiental y la evaluación de los efectos del cambio climático, se convierte en una herramienta esencial para proteger la salud de la población. Además, impulsa la investigación científica y el desarrollo de tecnologías orientadas al control de contaminantes, al tiempo que facilita la implementación de medidas preventivas en áreas de riesgo. En conjunto, estas acciones fortalecen la capacidad de la sociedad para enfrentar los desafíos ambientales y promover un entorno más seguro y saludable.
 
-### VII. Fuentes bibliográficas y de datos
+## Parte 2. Comprensión y preparación de los datos
 
-[1] airly. (s.f.). 5 Benefits of Air Quality Monitoring. airly. https://airly.org/en/5-benefits-of-air-quality-monitoring/
+### I. Indica el número de variables y el tamaño del dataset
 
-[2] Comisión Federal para la Protección contra Riesgos Sanitarios. (2025). Clasificación de los contaminantes del aire ambiente. Comisión Federal para la Protección contra Riesgos Sanitarios. https://www.gob.mx/cofepris/acciones-y-programas/2-clasificacion-de-los-contaminantes-del-aire-ambiente
+Tomando en cuenta que se decidió enfocar este proyecto en las zonas meteorológicas “CE - Centro”, la cual está ubicada en el municipio de Monterrey, y “NTE - Norte”, la cual está ubicada en el municipio de Escobedo, durante los años 2024 y 2025, se inició con dos conjuntos de datos, éstas siendo “Datos meteorológicos y de contaminantes 2024” y “Datos meteorológicos y de contaminantes 2025”, sin embargo, cada una de estos dos subconjuntos de datos contiene 15 subconjuntos de datos, 1 subconjunto de datos para cada una de las 15 zonas meteorológicas, por lo tanto se inició con 4 subconjuntos de datos, estos siendo “Datos meteorológicos y de contaminantes 2024 - CE”, “Datos meteorológicos y de contaminantes 2024 - NTE”, “Datos meteorológicos y de contaminantes 2025 - CE”, y “Datos meteorológicos y de contaminantes 2025 - NTE”.
 
-[3] Secretaría de Medio Ambiente de Nuevo León. (2024). El Sistema Integral de Monitoreo Ambiental (SIMA) del Gobierno de Nuevo León celebra hoy su 32 aniversario. Secretaría de Medio Ambiente de Nuevo León. https://www.facebook.com/watch/?v=847351737320355
+En primer lugar, el subconjunto de datos “Datos meteorológicos y de contaminantes 2024 - CE” contiene 8,784 registros y 16 variables, éstas siendo “Fecha y hora”, “CO (ppm)”, “NO (ppb)”, “NO2 (ppb)”, “NOX (ppb)”, “O3 (ppb)”, “PM10 (ug/m3)”, “PM2.5 (ug/m3)”, “PRS (mmHg)”, “RAINF (mm/h)”, “RH (%)”, “SO2 (ppb)”, “SR (kW/m2)”, “TOUT (ºC)”, “WSR (km/h)”, y “WDR (azimutal)”. Tomando esto en cuenta, el tamaño de este subconjunto de datos es igual a 140,544.
 
-[4] Secretaría de Medio Ambiente de Nuevo León. (2025). RED DE MONITOREO Y MANEJO DE DATOS DE CALIDAD DEL AIRE. Secretaría de Medio Ambiente de Nuevo León.
+En segundo lugar, el subconjunto de datos “Datos meteorológicos y de contaminantes 2024 - NTE” contiene 8,782 registros y 16 variables, éstas siendo las mismas que se mencionaron anteriormente. Tomando esto en cuenta, el tamaño de este subconjunto de datos es igual a 140,512.
 
-[5] Secretaría de Medio Ambiente de Nuevo León. (s.f.). Sistema Integral de Monitoreo Ambiental [SIMA] Nuevo León. Secretaría de Medio Ambiente de Nuevo León. https://aire.nl.gob.mx/
+En tercer lugar, el subconjunto de datos “Datos meteorológicos y de contaminantes 2025 - CE” contiene 4,345 registros y 16 variables, éstas siendo las mismas que se mencionaron anteriormente. Tomando esto en cuenta, el tamaño de este subconjunto de datos es igual a 69,520.
 
-[6] Sustainability Directory. (2025). What Are Air Quality Monitoring Challenges? Sustainability Directory. https://pollution.sustainability-directory.com/question/what-are-air-quality-monitoring-challenges/
+En último lugar, el subconjunto de datos “Datos meteorológicos y de contaminantes 2025 - NTE” contiene 4,345 registros y 16 variables, éstas siendo las mismas que se mencionaron anteriormente. Tomando esto en cuenta, el tamaño de este subconjunto de datos es igual a 69,520.
 
-[7] UN environment programme. (2022). How is air quality measured? UN environment programme. https://www.unep.org/news-and-stories/story/how-air-quality-measured
+Ya habiendo llevado a cabo el proceso de limpieza de los datos, en donde se llevó a cabo, principalmente, la imputación de datos, se finalizó con dos conjuntos de datos, el primero conteniendo, en uno mismo conjunto de datos, los subconjuntos de datos “Datos meteorológicos y de contaminantes 2024 - CE” y “Datos meteorológicos y de contaminantes 2025 - CE” y el segundo conteniendo, en un mismo conjunto de datos, los subconjuntos de datos “Datos meteorológicos y de contaminantes 2024 - NTE” y “Datos meteorológicos y de contaminantes 2025 - NTE”. 
 
-[8] Wu B., Zhao S., Liu Y., & Zhang C. (2025). Do meteorological variables impact air quality differently across urbanization gradients? A case study of Kaohsiung, Taiwan, China. ScienceDirect. https://www.sciencedirect.com/science/article/pii/S240584402500074X
+El primer conjunto de datos contiene 13,128 registros y 16 variables, éstas siendo “Fecha y hora”, “CO (ppm)”, “NO (ppb)”, “NO2 (ppb)”, “NOX (ppb)”, “O3 (ppb)”, “PM10 (ug/m3)”, “PM2.5 (ug/m3)”, “PRS (mmHg)”, “RAINF (mm/h)”, “RH (%)”, “SO2 (ppb)”, “SR (kW/m2)”, “TOUT (ºC)”, “WSR (km/h)”, y “WDR (azimutal)”. Tomando esto en cuenta, el tamaño de este conjunto de datos es igual a 210,048.
 
-Para esta primera etapa, empezaremos por cargar las librerías que necesitamos y establecemos algunas opciones de configuración:
+El segundo conjunto de datos contiene 13,128 registros y 16 variables, éstas siendo las mismas que se mencionaron anteriormente. Tomando esto en cuenta, el tamaño de este conjunto de datos es igual a 210,048.
 
-```{r}
-#| output: false
-library(tidyverse)
-library(here)
-library(readxl)
+### II. Describe las variables que consideras importantes y su relevancia para cumplir con el objetivo del proyecto.
 
-options(scipen = 999)
-```
+Las variables que se consideraron de mayor importancia para el análisis fueron la fecha y las correspondientes a los diferentes contaminantes presentes en la atmósfera. Estas variables son PM10, PM2.5, O3, SO2, NO2, CO, NO y Nox. Cada una de estas variables representa las diferentes concentraciones de contaminantes presentes en diferentes tiempos, medidos en partes por millón (ppm), partes por billón (ppb) y microgramos por metro cúbico ($\mu$g/m$^3$) respectivamente. 
 
-Ahora cargamos los datos que nos proporcionó el Socio Formador. Para los datos del 2024 tenemos:
+Estas variables permiten realizar un análisis de qué tan contaminada se encuentra una cierta zona y por lo tanto se puede obtener información sobre el impacto en el medio ambiente y la salud pública, lo cual es el enfoque de nuestro análisis. Las variables que no corresponden a factores contaminantes, es decir, TOUT (temperatura), RH (humedad relativa), SR (radiación solar), RAINF (precipitación), PRS (presión atmosférica), WSR (velocidad del viento) y WDR (dirección del viento) fueron preservadas en la base de datos para no limitar un futuro análisis en caso de que alguna de estas variables demostrara ser significativa.
 
-```{r}
-calidad_aire_2024_tbl <- read_excel(here("data", "BD 2024.xlsx")) %>%
-  glimpse()
-```
+### III. Resume el trabajo realizado en la preparación de datos
 
-Para los datos del 2025 tenemos:
 
-```{r}
-calidad_aire_2025_tbl <- read_excel(here("data", "BD 2025.xlsx")) %>%
-  glimpse()
-```
 
-1)  Comprensión de los datos:
+### IV. Inserta una liga que de acceso a tu base de datos limpia
 
-Dimensión del dataset. Indica cantidad de registros y columnas Describe claramente cada una de las variables, incluyendo su nombre, descripción, tipo (categórico/Numérico) y valores posibles que puede tomar, valores nulos. Verifica la calidad de los datos: valores faltantes, valores de los datos, valores espurios o erróneos
+https://github.com/CCCCC11111/MA2003B_E7/tree/trunk
+
+### Fuentes bibliográficas y de datos
+
+\[1\] airly. (s.f.). 5 Benefits of Air Quality Monitoring. airly. https://airly.org/en/5-benefits-of-air-quality-monitoring/
+
+\[2\] Comisión Federal para la Protección contra Riesgos Sanitarios. (2025). Clasificación de los contaminantes del aire ambiente. Comisión Federal para la Protección contra Riesgos Sanitarios. https://www.gob.mx/cofepris/acciones-y-programas/2-clasificacion-de-los-contaminantes-del-aire-ambiente
+
+\[3\] Secretaría de Medio Ambiente de Nuevo León. (2024). El Sistema Integral de Monitoreo Ambiental (SIMA) del Gobierno de Nuevo León celebra hoy su 32 aniversario. Secretaría de Medio Ambiente de Nuevo León. https://www.facebook.com/watch/?v=847351737320355
+
+\[4\] Secretaría de Medio Ambiente de Nuevo León. (2025). RED DE MONITOREO Y MANEJO DE DATOS DE CALIDAD DEL AIRE. Secretaría de Medio Ambiente de Nuevo León.
+
+\[5\] Secretaría de Medio Ambiente de Nuevo León. (s.f.). Sistema Integral de Monitoreo Ambiental \[SIMA\] Nuevo León. Secretaría de Medio Ambiente de Nuevo León. https://aire.nl.gob.mx/
+
+\[6\] SIMA. (2024) Datos meteorológicos y de contaminantes 2024 [Conjunto de datos] Agencia de la Calidad del Aire, N.L.
+
+\[7\] SIMA. (2025) Datos meteorológicos y de contaminantes 2025 [Conjunto de datos] Agencia de la Calidad del Aire, N.L.
+
+\[8\] Sustainability Directory. (2025). What Are Air Quality Monitoring Challenges? Sustainability Directory. https://pollution.sustainability-directory.com/question/what-are-air-quality-monitoring-challenges/
+
+\[9\] UN environment programme. (2022). How is air quality measured? UN environment programme. https://www.unep.org/news-and-stories/story/how-air-quality-measured
+
+\[10\] Wu B., Zhao S., Liu Y., & Zhang C. (2025). Do meteorological variables impact air quality differently across urbanization gradients? A case study of Kaohsiung, Taiwan, China. ScienceDirect. https://www.sciencedirect.com/science/article/pii/S240584402500074X
