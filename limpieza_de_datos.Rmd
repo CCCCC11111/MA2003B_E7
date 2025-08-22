@@ -10,6 +10,7 @@ knitr::opts_chunk$set(echo = TRUE)
 ```
 
 Comenzamos cargando las librerias necesarias para realizar nuestro análisis, en este caso utilizaremos tidyverse, gere y readxl.
+
 ```{r include=FALSE}
 library(tidyverse)
 library(here)
@@ -121,7 +122,7 @@ correccion_CE <- data.frame(
 correccion_CE
 ```
 
-  Al igual que los tipos de datos, los nombres de las tablas del año 2025 eran diferentes a las de las demás tablas, por lo que corregimos esto eligiendo el nombre que da la mayor cantidad de información, el cual es el formato del 2024:
+Al igual que los tipos de datos, los nombres de las tablas del año 2025 eran diferentes a las de las demás tablas, por lo que corregimos esto eligiendo el nombre que da la mayor cantidad de información, el cual es el formato del 2024:
 
 ```{r}
 names(calidad_aire_2025_CE_tbl_Corregido) <- names(calidad_aire_2024_CE_tbl)
