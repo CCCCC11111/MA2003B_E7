@@ -78,35 +78,7 @@ El análisis de la calidad del aire en Nuevo León tiene un impacto social signi
 
 \[8\] Wu B., Zhao S., Liu Y., & Zhang C. (2025). Do meteorological variables impact air quality differently across urbanization gradients? A case study of Kaohsiung, Taiwan, China. ScienceDirect. https://www.sciencedirect.com/science/article/pii/S240584402500074X
 
-Para esta primera etapa, empezaremos por cargar las librerías que necesitamos y establecemos algunas opciones de configuración:
-
-```{r}
-#| output: false
-library(tidyverse)
-library(here)
-library(readxl)
-
-options(scipen = 999)
-```
-
-Ahora cargamos los datos que nos proporcionó el Socio Formador. Para los datos del 2024 tenemos:
-
-```{r}
-calidad_aire_2024_tbl <- read_excel(here("data", "BD 2024.xlsx")) %>%
-  glimpse()
-```
-
-Para los datos del 2025 tenemos:
-
-```{r}
-calidad_aire_2025_tbl <- read_excel(here("data", "BD 2025.xlsx")) %>%
-  glimpse()
-```
-
-1)  Comprensión de los datos:
-
-Dimensión del dataset. Indica cantidad de registros y columnas Describe claramente cada una de las variables, incluyendo su nombre, descripción, tipo (categórico/Numérico) y valores posibles que puede tomar, valores nulos. Verifica la calidad de los datos: valores faltantes, valores de los datos, valores espurios o erróneos
 
 2.  Describe las variables que consideras importantes y su relevancia para cumplir con el objetivo del proyecto.
 
-Las variables que se consideraron de mayor importancia para el análisis fueron las correspondientes a los diferentes contaminantes presentes en la atmósfera. Estas variables son PM10, PM2.5, O3, SO2, NO2, CO, NO y Nox. Cada una de estas variables representa las diferentes concentraciones de contaminantes presentes en diferentes tiempos, medidos en partes por millón (ppm), partes por billón (ppb) y microgramos por metro cúbico ($\mu$g/m$^3$) respectivamente. Estas variables permiten realizar un análisis de qué tan contaminada se encuentra una cierta zona y por lo tanto se puede obtener información sobre el impacto en el medio ambiente y la salud pública, lo cual es el enfoque de nuestro análisis. Las variables que no corresponden a factores contaminantes, es decir, TOUT (temperatura), RH (humedad relativa), SR (radiación solar), RAINF (precipitación), PRS (presión atmosférica), WSR (velocidad del viento) y WDR (dirección del viento) fueron preservadas en la base de datos para no limitar un futuro análisis en caso de que alguna de estas variables demostrara ser significativa.
+Las variables que se consideraron de mayor importancia para el análisis fueron la fecha y las correspondientes a los diferentes contaminantes presentes en la atmósfera. Estas variables son PM10, PM2.5, O3, SO2, NO2, CO, NO y Nox. Cada una de estas variables representa las diferentes concentraciones de contaminantes presentes en diferentes tiempos, medidos en partes por millón (ppm), partes por billón (ppb) y microgramos por metro cúbico ($\mu$g/m$^3$) respectivamente. Estas variables permiten realizar un análisis de qué tan contaminada se encuentra una cierta zona y por lo tanto se puede obtener información sobre el impacto en el medio ambiente y la salud pública, lo cual es el enfoque de nuestro análisis. Las variables que no corresponden a factores contaminantes, es decir, TOUT (temperatura), RH (humedad relativa), SR (radiación solar), RAINF (precipitación), PRS (presión atmosférica), WSR (velocidad del viento) y WDR (dirección del viento) fueron preservadas en la base de datos para no limitar un futuro análisis en caso de que alguna de estas variables demostrara ser significativa.
