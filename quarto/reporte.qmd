@@ -80,11 +80,19 @@ El primer conjunto de datos contiene 13,128 registros y 16 variables, éstas sie
 
 El segundo conjunto de datos contiene 13,128 registros y 16 variables, éstas siendo las mismas que se mencionaron anteriormente. Tomando esto en cuenta, el tamaño de este conjunto de datos es igual a 210,048.
 
-#### II. Describe las variables que consideras importantes y su relevancia para cumplir con el objetivo del proyecto.
+### II. Describe las variables que consideras importantes y su relevancia para cumplir con el objetivo del proyecto.
 
 Las variables que se consideraron de mayor importancia para el análisis fueron la fecha y las correspondientes a los diferentes contaminantes presentes en la atmósfera. Estas variables son PM10, PM2.5, O3, SO2, NO2, CO, NO y Nox. Cada una de estas variables representa las diferentes concentraciones de contaminantes presentes en diferentes tiempos, medidos en partes por millón (ppm), partes por billón (ppb) y microgramos por metro cúbico ($\mu$g/m$^3$) respectivamente. 
 
 Estas variables permiten realizar un análisis de qué tan contaminada se encuentra una cierta zona y por lo tanto se puede obtener información sobre el impacto en el medio ambiente y la salud pública, lo cual es el enfoque de nuestro análisis. Las variables que no corresponden a factores contaminantes, es decir, TOUT (temperatura), RH (humedad relativa), SR (radiación solar), RAINF (precipitación), PRS (presión atmosférica), WSR (velocidad del viento) y WDR (dirección del viento) fueron preservadas en la base de datos para no limitar un futuro análisis en caso de que alguna de estas variables demostrara ser significativa.
+
+### III. Resume el trabajo realizado en la preparación de datos
+
+
+
+### IV. Inserta una liga que de acceso a tu base de datos limpia
+
+https://github.com/CCCCC11111/MA2003B_E7/tree/trunk
 
 ### Fuentes bibliográficas y de datos
 
