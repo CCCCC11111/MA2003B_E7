@@ -9,75 +9,194 @@ output: html_document
 knitr::opts_chunk$set(echo = TRUE)
 ```
 
+Para la imputación de datos utilizamos las librerías zoo e imputeTS.
+
 ```{r}
 library(zoo)
 library(imputeTS)
 ```
 
+Convertimos nuestros datasets a un dato Time Series con frecuencia horaria.
 ```{r}
 ts_CE <- ts(dataset_CE, start = c(2024, 1), frequency = 24)
+ts_NTE <- ts(dataset_NTE, start = c(2024, 1), frequency = 24)
+names_data <- names(dataset_CE)
 ```
-Function	Description
-na_interpolation	Missing Value Imputation by Interpolation 
-na_kalman	Missing Value Imputation by Kalman Smoothing
-na_locf	Missing Value Imputation by Last Observation Carried Forward
-na_ma	Missing Value Imputation by Weighted Moving Average
-na_mean	Missing Value Imputation by Mean Value
-na_random	Missing Value Imputation by Random Sample
-na_remove	Remove Missing Values
-na_replace	Replace Missing Values by a Defined Value
-na_seadec	Seasonally Decomposed Missing Value Imputation
-na_seasplit	Seasonally Splitted Missing Value Imputation
 
-Function	Description
-ggplot_na_distribution	Visualize Distribution of Missing Values
-ggplot_na_distribution2	Missing Values Summarized in Intervals
-ggplot_na_gapsize	Visualize Distribution of NA Gapsizes
-ggplot_na_imputations	Visualize Imputed Values
+Decidimos intentar con diferentes métodos de imputación y compararlos mediante QQ-Plots y Boxplots. Primero comenzamos con interpolación de datos sencilla.
 
 ```{r}
 dataset_CE_interpolado <- na_interpolation(ts_CE)
-cor(dataset_CE_interpolado[, -1], use = "pairwise.complete.obs")
+```
+
+Para cada uno de los métodos de imputación decidimos realizar un QQ-Plot con su respectiva línea y un boxplot para observar los valores outliers y si es que hay un cambio significativo entre las imputaciones.
+
+```{r}
+for (i in 1:length(names_data)) {
+  
+  qqnorm(dataset_CE_interpolado[, i], main = paste("Q-Q Plot of", names_data[i]))
+  qqline(dataset_CE_interpolado[, i], col = "red")
+  
+  boxplot(dataset_CE_interpolado[, i])
+}
+```
+
+Intentamos también con los métodos auto.arima y StructTS, pero tomaba demasiado tiempo entrenar los modelos para que imputaran los datos en todo el dataset, por lo que por temas de tiempo decidimos posponerlo.
+
+```{r}
+#dataset_CE_arima <- na_kalman(ts_CE, model = "auto.arima")
 ```
 
 ```{r}
-dataset_CE_arima <- na_kalman(ts_CE, model = "auto.arima")
-cor(dataset_CE_arima[, -1], use = "pairwise.complete.obs")
+#dataset_CE_struct <- na_kalman(ts_CE, model = "StructTS")
 ```
 
-```{r}
-dataset_CE_struct <- na_kalman(ts_CE, model = "StructTS")
-cor(dataset_CE_struct[, -1], use = "pairwise.complete.obs")
-```
-
+Realizamos imputación con el método LOCF.
 
 ```{r}
 dataset_CE_LOFC <- na_locf(ts_CE)
-cor(dataset_CE_LOFC[, -1], use = "pairwise.complete.obs")
 ```
 
+```{r}
+for (i in 1:length(names_data)) {
+  
+  qqnorm(dataset_CE_LOFC[, i], main = paste("Q-Q Plot of", names_data[i]))
+  qqline(dataset_CE_LOFC[, i], col = "red")
+  
+  boxplot(dataset_CE_LOFC[, i])
+}
+```
+
+Con el método NOCB
 
 ```{r}
 dataset_CE_LOFC2 <- na_locf(ts_CE, option = 'nocb')
-cor(dataset_CE_LOFC2[, -1], use = "pairwise.complete.obs")
 ```
+
+```{r}
+for (i in 1:length(names_data)) {
+  
+  qqnorm(dataset_CE_LOFC2[, i], main = paste("Q-Q Plot of", names_data[i]))
+  qqline(dataset_CE_LOFC2[, i], col = "red")
+  
+  boxplot(dataset_CE_LOFC2[, i])
+}
+```
+
+Con descomposición de seadec.
 
 ```{r}
 dataset_CE_decom <- na_seadec(ts_CE, algorithm = "interpolation")
-cor(ts_CE[, -1], use = "pairwise.complete.obs")
 ```
+
+```{r}
+for (i in 1:length(names_data)) {
+  
+  qqnorm(dataset_CE_decom[, i], main = paste("Q-Q Plot of", names_data[i]))
+  qqline(dataset_CE_decom[, i], col = "red")
+  
+  boxplot(dataset_CE_decom[, i])
+}
+```
+
+Y finalmente con split de seasplit.
 
 ```{r}
 dataset_CE_split <- na_seasplit(ts_CE, algorithm = "interpolation")
-cor(ts_CE[, -1], use = "pairwise.complete.obs")
 ```
 
 ```{r}
-for (i in 1:length(names_CE)) {
+for (i in 1:length(names_data)) {
   
-  qqnorm(dataset_CE_split[, i], main = paste("Q-Q Plot of", names_CE[i]))
-  
+  qqnorm(dataset_CE_split[, i], main = paste("Q-Q Plot of", names_data[i]))
   qqline(dataset_CE_split[, i], col = "red")
+  
+  boxplot(dataset_CE_split[, i])
 }
 ```
-test
+
+Y realizamos lo mismo para la base de datos del norte.
+
+```{r}
+dataset_NTE_interpolado <- na_interpolation(ts_NTE)
+```
+
+```{r}
+for (i in 1:length(names_data)) {
+  
+  qqnorm(dataset_NTE_interpolado[, i], main = paste("Q-Q Plot of", names_data[i]))
+  qqline(dataset_NTE_interpolado[, i], col = "red")
+  
+  boxplot(dataset_NTE_interpolado[, i])
+}
+```
+
+```{r}
+#dataset_CE_arima <- na_kalman(ts_CE, model = "auto.arima")
+```
+
+```{r}
+#dataset_CE_struct <- na_kalman(ts_CE, model = "StructTS")
+```
+
+```{r}
+dataset_NTE_LOFC <- na_locf(ts_NTE)
+```
+
+```{r}
+for (i in 1:length(names_data)) {
+  
+  qqnorm(dataset_NTE_LOFC[, i], main = paste("Q-Q Plot of", names_data[i]))
+  qqline(dataset_NTE_LOFC[, i], col = "red")
+  
+  boxplot(dataset_NTE_LOFC[, i])
+}
+```
+
+```{r}
+dataset_NTE_LOFC2 <- na_locf(ts_NTE, option = 'nocb')
+```
+
+```{r}
+for (i in 1:length(names_data)) {
+  
+  qqnorm(dataset_NTE_LOFC2[, i], main = paste("Q-Q Plot of", names_data[i]))
+  qqline(dataset_NTE_LOFC2[, i], col = "red")
+  
+  boxplot(dataset_NTE_LOFC2[, i])
+}
+```
+
+```{r}
+dataset_NTE_decom <- na_seadec(ts_NTE, algorithm = "interpolation")
+```
+
+```{r}
+for (i in 1:length(names_data)) {
+  
+  qqnorm(dataset_NTE_decom[, i], main = paste("Q-Q Plot of", names_data[i]))
+  qqline(dataset_NTE_decom[, i], col = "red")
+  
+  boxplot(dataset_NTE_decom[, i])
+}
+```
+
+```{r}
+dataset_NTE_split <- na_seasplit(ts_NTE, algorithm = "interpolation")
+```
+
+```{r}
+for (i in 1:length(names_data)) {
+  
+  qqnorm(dataset_NTE_split[, i], main = paste("Q-Q Plot of", names_data[i]))
+  qqline(dataset_NTE_split[, i], col = "red")
+  
+  boxplot(dataset_NTE_split[, i])
+}
+```
+
+Tras realizar esto, sigue el elegir el método de imputación que le haga mejor justicia a la base de datos pero esto será realizado en la siguiente etapa del reto.
+
+En cuanto a transformación de los datos, decidimos que no era necesario, pues el binning es para convertir variables numéricas a categóricas y nuestro objetivo no está relacionado a eso; la normalización y/o escalamiento nos perjudica a nosotros en cuanto a la interpretación de la base de datos, y por la naturaleza de como los objetos Time Series convierten las fechas a un valor numérico, separar la fecha y la hora en atributos diferentes le perjudicaria a la cronología de la serie de tiempo.
+
+Y finalmente, tras platicar con el socio-formador, descubrimos que es normal que de una hora a otra haya un cambio drástico en los valores de los contaminantes, y puede saltar de ceros a cientos entonces tenemos incertidumbre en cuanto a la forma en la que podríamos tratar con los outliers, ya que también el remover valores daña a la cronología de nuestra serie.

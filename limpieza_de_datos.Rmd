@@ -9,13 +9,14 @@ output: html_document
 knitr::opts_chunk$set(echo = TRUE)
 ```
 
+Comenzamos cargando las librerias necesarias para realizar nuestro análisis, en este caso utilizaremos tidyverse, gere y readxl.
 ```{r include=FALSE}
 library(tidyverse)
 library(here)
 library(readxl)
 ```
 
-Ahora cargamos los datos que nos proporcionó el Socio Formador. Vamos a terminar con 4 tablas totales que simplificaremos a 2, ya que nos centraremos en utilizar los datos de las zonas del centro (CE) y del norte (NTE).
+Ahora cargamos los datos que nos proporcionó el Socio Formador. Vamos a terminar con 4 tablas totales que simplificaremos a 2, ya que nos centraremos en utilizar los datos de las zonas del centro (CE) y del norte (NTE). Esto porque el objetivo de nuestro proyecto, como fue mencionado en el reporte, es realizar un estudio de las distribuciones de los contaminantes en las diferentes zonas estudiadas, y en este caso decidimos comparar una zona central con zonas un poco más exteriores.
 
 Para los datos del 2024 tenemos:
 
@@ -33,36 +34,28 @@ calidad_aire_2025_CE_tbl <- read_excel(here("data", "BD 2025.xlsx"), sheet = 'CE
 calidad_aire_2025_NTE_tbl <- read_excel(here("data", "BD 2025.xlsx"), sheet = 'NTE')
 ```
 
-1) Comprensión de los datos:
-
-A. Dimensión del dataset. Indica la cantidad de registros y columnas
+Para comprender mejor nuestros datos podemos analizar las dimensiones del dataset, en donde podremos obtener nuestra cantidad de observaciones (filas) y la cantidad de contaminantes o elementos en el aire analizados (columnas).
 
 ```{r}
 cat('2024\nZONA CENTRO - Registros:',dim(calidad_aire_2024_CE_tbl)[1],'Columnas:',dim(calidad_aire_2024_CE_tbl)[2], '\nZONA NORTE - Registros:',dim(calidad_aire_2024_NTE_tbl)[1],'Columnas:',dim(calidad_aire_2024_NTE_tbl)[2])
 
 cat('\n2025\nZONA CENTRO - Registros:',dim(calidad_aire_2025_CE_tbl)[1],'Columnas:',dim(calidad_aire_2025_CE_tbl)[2], '\nZONA NORTE - Registros:',dim(calidad_aire_2025_NTE_tbl)[1],'Columnas:',dim(calidad_aire_2025_NTE_tbl)[2])
 ```
+Como podemos observar, tenemos un total de 8784 registros en la zona centro para el 2024 y 4345 para el 2025, y en cuanto a la zona norte, tenemos un total de 8782 registros en 2024 y 4345 en 2025. Todos con la misma cantidad de columnas. La razón por la que en el 2024 zona norte hay menos registros que en la zona centro es porque al inicio encontramos una fila con las unidades en las que se miden los contaminantes seguida de una fila de valores nulos, por lo que decidimos eliminar estos para procesarlos más facilmente.
 
-B. Describe claramente cada una de las variables, incluyendo su nombre, descripción, tipo (categórico/numérico) y valores posibles que puede tomar, valores nulos.
-
+Más adelante vamos a describir cada una de las variables, pero por el momento podemos observar que hay un problema, y es que hay variables que están errónemaente clasificados como carácteres en vez de valores numéricos.
 
 ```{r}
 summary(calidad_aire_2024_CE_tbl)
 summary(calidad_aire_2024_NTE_tbl)
-
-#borra este output pq esta enorme y no se si sirva
 ```
 
 ```{r}
 summary(calidad_aire_2025_CE_tbl)
 summary(calidad_aire_2025_NTE_tbl)
-
-#igual este output
 ```
 
-C. Verifica la calidad de los datos: valores faltantes, valores de los datos, valores espurios o erróneos.
-
-Se identificaron los siguientes valores faltantes para 2024:
+Para identificar los diferentes valores que hay en cada una de las variables hacemos funciones en donde se revise el tipo de dato que conforma a cada una de las columnas, la cantidad de valores únicos por columna, y la suma de valores nulos para el 2024.
 
 ```{r}
 desc24_CE <- data.frame(
@@ -81,7 +74,9 @@ desc24_CE
 desc24_NTE
 ```
 
-Y para 2025:
+Como podemos observar, todas nuestras características son de tipo numérico salvo la fecha, que esta en formato POSIXct. Podemos observar que hay bastantes valores repetidos ya que la cantidad de valores unicos es relativamente baja. También podemos ver que hay cierto volumen de valores nulos repartidos de manera diferente a lo largo de las variables del dataset, y una variable en específico, RH(%) de la zona norte tiene aproximadamente 6500 valores nulos, por lo que no aporta casi nada de información.
+
+Ahora para 2025:
 
 ```{r}
 desc25_CE <- data.frame(
@@ -100,8 +95,7 @@ desc25_CE
 desc25_NTE
 ```
 
-
-Se identificaron formatos erróneos en variables que deberían ser etiquetadas como "numeric" y están etiquetadas como "character", pero solamente dentro de la tabla centro de la base de datos del 2025 como se puede ver a continuación:
+Podemos identificar formatos erróneos en variables que deberían ser etiquetadas como "numeric" y están etiquetadas como "character", pero solamente dentro de la tabla centro de la base de datos del 2025 como se puede ver en la descripción generada de la tabla. Luego también la variable de RH en la tabla norte, similar al 2024, tiene una mayoría de datos marcados como nulos. Para corregir el error del tipo equivocado de datos, primero declaramos qué tabla es aquella que tenemos que modificar, en este caso es la tabla centro del 2025:
 
 ```{r}
 desc25_CE_2 <- data.frame(
@@ -110,7 +104,7 @@ desc25_CE_2 <- data.frame(
 desc25_CE_2
 ```
 
-Y se realizó la correccion acorde para corregirlo:
+Y para realizar la corrección, hacemos un for loop en el que tomamos las columnas como vectores y pedimos que sus datos se tomen a consideración como numéricos, y finalmente imprimimos una descripción de los tipos de datos para asegurarnos que se haya realizado correctamente. A la hora de hacer esto, tenemos que ignorar la columna de la fecha, porque esta está en un formato que no necesitamos convertir a numérico.
 
 ```{r include=FALSE}
 calidad_aire_2025_CE_tbl_Corregido <- calidad_aire_2025_CE_tbl
@@ -127,7 +121,7 @@ correccion_CE <- data.frame(
 correccion_CE
 ```
 
-Al igual que los tipos de datos, los nombres de la tabla central del año 2025 eran diferentes a las de las demás tablas, por lo que corregimos esto:
+  Al igual que los tipos de datos, los nombres de las tablas del año 2025 eran diferentes a las de las demás tablas, por lo que corregimos esto eligiendo el nombre que da la mayor cantidad de información, el cual es el formato del 2024:
 
 ```{r}
 names(calidad_aire_2025_CE_tbl_Corregido) <- names(calidad_aire_2024_CE_tbl)
@@ -136,20 +130,40 @@ calidad_aire_2025_NTE_tbl_Corregido <- calidad_aire_2025_NTE_tbl
 names(calidad_aire_2025_NTE_tbl_Corregido) <- names(calidad_aire_2024_CE_tbl)
 ```
 
-Y ahora podemos conseguir nuestros 2 datasets, uno especifico para la zona norte y uno para la zona centro:
+Y ahora podemos hacer rbind y conseguir nuestros 2 datasets, uno especifico para la zona norte y uno para la zona centro:
 
 ```{r}
 dataset_CE <- rbind(calidad_aire_2024_CE_tbl, calidad_aire_2025_CE_tbl_Corregido)
 dataset_NTE <- rbind(calidad_aire_2024_NTE_tbl, calidad_aire_2025_NTE_tbl_Corregido)
 ```
 
+Y conseguir sus dimensiones respectivas de las bases de datos ya completas:
+
 ```{r}
-dataset_CE <- dataset_CE[-1, ]
+dim(dataset_CE)
+dim(dataset_NTE)
+```
+Terminamos con dos datasets con la misma cantidad de filas y columnas. Luego analizamos las bases de datos y nos dimos cuenta que hay filas que faltan dentro de las bases de datos, siendo la fila 2654 -> 20/04/24 12:00 y fila 2655 -> 20/04/24 15:00, por lo que tuvimos que añadir estas filas con datos vacíos para su posterior imputación. También encontramos que habíamos dejado una fila de unidades al hacer concatenación de las bases de datos. A la hora de añadir estas filas, tuvimos que considerar que añadir una fecha sale diferente en la base de datos y en la escritura en el código. Teorizamos que esto se debe a la zona horario internacional y por el hecho que nuestra ubicación se encuentra en UTC-6.
+
+```{r}
+dataset_NTE <- dataset_NTE[-8783, ]
 ```
 
 ```{r}
-summary(dataset_CE)
+dataset_NTE <- add_row(dataset_NTE, `Fecha y hora` = as.POSIXct("2024-04-20 07:00:00"))
+dataset_NTE <- add_row(dataset_NTE, `Fecha y hora` = as.POSIXct("2024-04-20 08:00:00"))
+
+dataset_NTE <- dataset_NTE[order(dataset_NTE$`Fecha y hora`),]
 ```
+
+```{r}
+dataset_CE <- add_row(dataset_CE, `Fecha y hora` = as.POSIXct("2024-01-01 01:00:00"))
+dataset_CE <- dataset_CE[-13129 ,]
+
+dataset_CE[order(dataset_CE$`Fecha y hora`),]
+```
+
+Ya con las bases juntas podemos ver razones de valores NA y comenzar la imputación.
 
 ```{r}
 desc_dataset_CE <- data.frame(
@@ -171,8 +185,10 @@ desc_dataset_NTE$Proporcion_NA <- paste0(desc_dataset_NTE$Proporcion_NA, '%')
 desc_dataset_NTE
 ```
 
+Finalmente, con ayuda de la inteligencia artificial y para mejor visualización de los datos faltantes, decidimos generar un missmap para observar los NAs presentados en la base de datos, ya que al intentar realizar estas visualizaciones por los métodos oficiales de la documentación de ImputeTS notamos que los datos faltantes eran tan pocos en algunos casos que no eran considerados por las funciones para graficar.
+
 ```{r}
-#AI generated
+#Generado con IA
 library(Amelia)
 missmap(dataset_CE, main = "Missing Values Heatmap CENTRO", col = c("yellow", "black"))
 
