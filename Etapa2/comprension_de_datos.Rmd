@@ -3,3 +3,69 @@ title: "comprension_de_datos"
 output: html_document
 ---
 
+```{r}
+df_centro = read.csv("DATASET_CENTRO_LIMPIO")
+df_norte = read.csv("DATASET_NORTE_LIMPIO")
+```
+
+Comprensión de los datos
+
+a. Da continuidad al trabajo realizado en la Etapa 1.
+b. Dimensión del dataset. Indica cantidad de registros y columnas
+```{r}
+dim(df_centro)
+dim(df_norte)
+```
+
+c. Describe claramente cada una de las variables, incluyendo su nombre, descripción, tipo (categórico/Numérico) y valores posibles que puede tomar, valores nulos.
+```{r}
+desc_centro <- data.frame(
+  Tipo = sapply(df_centro, function(x) class(x)[1]),
+  Valores_Unicos = sapply(df_centro, function(x) length(unique(x))),
+  Valores_NA = sapply(df_centro, function(x) sum(is.na(x)))
+)
+
+desc_norte <- data.frame(
+  Tipo = sapply(df_norte, function(x) class(x)[1]),
+  Valores_Unicos = sapply(df_norte, function(x) length(unique(x))),
+  Valores_NA = sapply(df_norte, function(x) sum(is.na(x)))
+)
+
+desc_centro
+desc_norte
+```
+
+
+d. Exploración de datos:
+1. Calcula medidas estadísticas
+  -Variables cuantitativas
+    -Medidas de tendencia central: promedio, media, mediana y **moda** de los datos.
+    -Medidas de dispersión: rango: máximo - mínimo, varianza, desviación estándar.
+```{r}
+summary(df_centro)
+summary(df_norte)
+
+```
+```{r}
+var_centro =diag(var(df_centro))
+var_norte = diag(var(df_norte))
+sd_norte = sqrt(var_norte)
+sd_centro = sqrt(var_centro)
+
+var_centro
+var_norte
+sd_centro
+sd_norte
+
+```
+    
+    
+2. Explora los datos usando herramientas de visualización
+  -Variables cuantitativas:
+    -Medidas de posición no-central: cuartiles, outlier (valores atípicos),             boxplots
+    -Análisis de distribución de los datos (Histogramas). Identificar si tiene          forma simétrica o asimétrica
+    -Análisis de correlación  de los datos, mapa de calor
+    -Distribución de los datos (diagramas de barras, diagramas de pastel)
+2) Verifica la calidad de los datos:
+a) Detecta valores faltantes, erróneos, duplicados, errores de escritura
+b) Corrige valores érroneos que no hayas detectado cuando limpiaste los datos
