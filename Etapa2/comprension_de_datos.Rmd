@@ -130,3 +130,20 @@ for (i in 1:length(names_data)) {
 2) Verifica la calidad de los datos:
 a) Detecta valores faltantes, erróneos, duplicados, errores de escritura
 b) Corrige valores érroneos que no hayas detectado cuando limpiaste los datos
+```{r}
+desc_CE <- data.frame(
+  Tipo = sapply(df_centro, function(x) class(x)[1]),
+  Valores_Unicos = sapply(df_centro, function(x) length(unique(x))),
+  Valores_NA = sapply(df_centro, function(x) sum(is.na(x)))
+)
+desc_CE
+```
+```{r}
+desc_NT <- data.frame(
+  Tipo = sapply(df_norte, function(x) class(x)[1]),
+  Valores_Unicos = sapply(df_norte, function(x) length(unique(x))),
+  Valores_NA = sapply(df_norte, function(x) sum(is.na(x)))
+)
+desc_NT
+```
+
