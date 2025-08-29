@@ -59,10 +59,13 @@ var_norte = diag(var(df_norte))
 sd_norte = sqrt(var_norte)
 sd_centro = sqrt(var_centro)
 
-var_centro
-var_norte
-sd_centro
-sd_norte
+#var_centro
+#var_norte
+#sd_centro
+#sd_norte
+
+cat("Norte\nVarianza\n",var_norte,"\n\nDesviación Estandar\n",sd_norte,"\n\nCentro\nVarianza\n",
+    var_centro,"\n\nDesviación Estandar",sd_centro)
 
 ```
     
@@ -90,7 +93,7 @@ cor_matrix_centro <- cor(df_centro)
 # Heatmap with base R
 heatmap(cor_matrix_centro)
 
-corrplot(cor_matrix, method = "color", type = "upper", tl.cex = 0.8)
+corrplot(cor_matrix_centro, method = "color", type = "upper", tl.cex = 0.8)
 ```
 ```{r}
 cor_matrix_norte <- cor(df_norte)
@@ -98,7 +101,7 @@ cor_matrix_norte <- cor(df_norte)
 # Heatmap with base R
 heatmap(cor_matrix_norte)
 
-corrplot(cor_matrix, method = "color", type = "upper", tl.cex = 0.8)
+corrplot(cor_matrix_norte, method = "color", type = "upper", tl.cex = 0.8)
 ```
 
 ```{r}

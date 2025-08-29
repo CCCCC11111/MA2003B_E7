@@ -8,10 +8,7 @@ format:
     toc-depth: 3       # Levels in TOC
 ---
 
-A01571511 - Alberto Palomino Carvajal
-A01612614 - Carlos Viramontes Espinosa
-A01571619 - Carlos Cuéllar Solís
-A01571679 - Luis Javier Jacobo Morimoto
+A01571511 - Alberto Palomino Carvajal A01612614 - Carlos Viramontes Espinosa A01571619 - Carlos Cuéllar Solís A01571679 - Luis Javier Jacobo Morimoto
 
 # Etapa 1. Conociendo el negocio
 
@@ -79,7 +76,7 @@ En tercer lugar, el subconjunto de datos “Datos meteorológicos y de contamina
 
 En último lugar, el subconjunto de datos “Datos meteorológicos y de contaminantes 2025 - NTE” contiene 4,345 registros y 16 variables, éstas siendo las mismas que se mencionaron anteriormente. Tomando esto en cuenta, el tamaño de este subconjunto de datos es igual a 69,520.
 
-Ya habiendo llevado a cabo el proceso de limpieza de los datos, en donde se llevó a cabo, principalmente, la imputación de datos, se finalizó con dos conjuntos de datos, el primero conteniendo, en uno mismo conjunto de datos, los subconjuntos de datos “Datos meteorológicos y de contaminantes 2024 - CE” y “Datos meteorológicos y de contaminantes 2025 - CE” y el segundo conteniendo, en un mismo conjunto de datos, los subconjuntos de datos “Datos meteorológicos y de contaminantes 2024 - NTE” y “Datos meteorológicos y de contaminantes 2025 - NTE”. 
+Ya habiendo llevado a cabo el proceso de limpieza de los datos, en donde se llevó a cabo, principalmente, la imputación de datos, se finalizó con dos conjuntos de datos, el primero conteniendo, en uno mismo conjunto de datos, los subconjuntos de datos “Datos meteorológicos y de contaminantes 2024 - CE” y “Datos meteorológicos y de contaminantes 2025 - CE” y el segundo conteniendo, en un mismo conjunto de datos, los subconjuntos de datos “Datos meteorológicos y de contaminantes 2024 - NTE” y “Datos meteorológicos y de contaminantes 2025 - NTE”.
 
 El primer conjunto de datos contiene 13,128 registros y 16 variables, éstas siendo “Fecha y hora”, “CO (ppm)”, “NO (ppb)”, “NO2 (ppb)”, “NOX (ppb)”, “O3 (ppb)”, “PM10 (ug/m3)”, “PM2.5 (ug/m3)”, “PRS (mmHg)”, “RAINF (mm/h)”, “RH (%)”, “SO2 (ppb)”, “SR (kW/m2)”, “TOUT (ºC)”, “WSR (km/h)”, y “WDR (azimutal)”. Tomando esto en cuenta, el tamaño de este conjunto de datos es igual a 210,048.
 
@@ -87,7 +84,7 @@ El segundo conjunto de datos contiene 13,128 registros y 16 variables, éstas si
 
 ### II. Describe las variables que consideras importantes y su relevancia para cumplir con el objetivo del proyecto.
 
-Las variables que se consideraron de mayor importancia para el análisis fueron la fecha y las correspondientes a los diferentes contaminantes presentes en la atmósfera. Estas variables son PM10, PM2.5, O3, SO2, NO2, CO, NO y Nox. Cada una de estas variables representa las diferentes concentraciones de contaminantes presentes en diferentes tiempos, medidos en partes por millón (ppm), partes por billón (ppb) y microgramos por metro cúbico ($\mu$g/m$^3$) respectivamente. 
+Las variables que se consideraron de mayor importancia para el análisis fueron la fecha y las correspondientes a los diferentes contaminantes presentes en la atmósfera. Estas variables son PM10, PM2.5, O3, SO2, NO2, CO, NO y Nox. Cada una de estas variables representa las diferentes concentraciones de contaminantes presentes en diferentes tiempos, medidos en partes por millón (ppm), partes por billón (ppb) y microgramos por metro cúbico ($\mu$g/m$^3$) respectivamente.
 
 Estas variables permiten realizar un análisis de qué tan contaminada se encuentra una cierta zona y por lo tanto se puede obtener información sobre el impacto en el medio ambiente y la salud pública, lo cual es el enfoque de nuestro análisis. Las variables que no corresponden a factores contaminantes, es decir, TOUT (temperatura), RH (humedad relativa), SR (radiación solar), RAINF (precipitación), PRS (presión atmosférica), WSR (velocidad del viento) y WDR (dirección del viento) fueron preservadas en la base de datos para no limitar un futuro análisis en caso de que alguna de estas variables demostrara ser significativa.
 
@@ -95,15 +92,15 @@ Estas variables permiten realizar un análisis de qué tan contaminada se encuen
 
 Para la limpieza de datos decidimos comenzar explorando nuestras bases de datos, para así ver qué cambios serían necesarios de realizar a lo largo de la limpieza. Entre las bases de datos encontramos problemas peculiares, como el hecho que los nombres en las bases de ambos años se manejaban de manera diferente, ya que en el año 2024 se tenían los nombres y unidades de medición en la misma fila, esta siendo la de nombres, mientras que en el 2025 se tenían los nombres en la fila de nombres y las unidades en la primera fila de la base de datos, lo que creaba una nueva fila innecesaria. Problemas pequeños como estos son sencillos de perderse, por lo que tuvimos que hacer una revisión exhaustiva a los valores de la fecha para asegurarnos que la cronología estuviera intacta.
 
-El primer error que decidimos atajar era el hecho que en las bases de datos del año 2025, por el hecho que se tenía esta columna con las unidades, se interpretaron automáticamente como datos de tipo "character" mientras que nosotros necesitabamos de tipo "numeric" para poder realizar una mejor limpieza, entonces creamos un ciclo for sencillo que, tras eliminar esta fila de unidades, se saltaba la columna de las fechas y convertía los datos al tipo de dato que necesitábamos, que fue "numeric", esto fue hecho tomando las columnas individuales de la base de datos como vectores y aplicándole "as.numeric()" a cada uno de estos vectores, para así corregir este problema de manera sencilla. 
+El primer error que decidimos atajar era el hecho que en las bases de datos del año 2025, por el hecho que se tenía esta columna con las unidades, se interpretaron automáticamente como datos de tipo "character" mientras que nosotros necesitabamos de tipo "numeric" para poder realizar una mejor limpieza, entonces creamos un ciclo for sencillo que, tras eliminar esta fila de unidades, se saltaba la columna de las fechas y convertía los datos al tipo de dato que necesitábamos, que fue "numeric", esto fue hecho tomando las columnas individuales de la base de datos como vectores y aplicándole "as.numeric()" a cada uno de estos vectores, para así corregir este problema de manera sencilla.
 
 El segundo error que corregimos fue la discrepancia que había entre los nombres de las bases de los diferentes años, entonces utilizando "names()" conseguimos los nombres de las columnas de una de las bases del año 2024, que contenían la mayor cantidad de información, y se la aplicamos a ambas bases del año 2025. Era posible hacer esto de esta manera sencilla por el hecho que todos los contaminantes estaban en las mismas posiciones de las columnas en las 4 bases de datos.
 
-Corrigiendo esto, decidimos hacer inmediatamente la concatenación de las bases de datos, esto hecho verticalmente, para reducir nuestra cantidad de bases de 4 a 2, lo que simplificaría significativamente los procesos de aquí en adelante, y esto no hubiera sido posible anteriormente, pues las bases de datos contenían tipos de datos y nombres diferentes, lo que no permitiría una concatenación exitosa. Desafortunadamente, tras concatenar las bases de datos notamos que la base de datos del centro tenía una fila más que la base de datos del norte, y esto podría arruinar planes más adelante, por lo que manualmente buscamos los datos que faltaban (ya que a la hora de realizar plots, era tanto el volumen de datos que no se podían observar los faltantes) y encontramos que hacían falta 2 datos seguidos, en la fila 2654 -> 20/04/24 12:00 y fila 2655 -> 20/04/24 15:00. Fue gracias a la hora de las fechas que pudimos resolver este problema, y a la hora de insertar las columnas nos dimos cuenta que se añadía una fecha diferente, 6 horas posteriores a la que necesitábamos. Teorizamos que se debe a la zona horaria, y creemos que R utiliza el de la zona estándar UTC. Esto lo explicaría fácilmente porque donde estamos realizando esta limpieza de datos se encuentra en un lugar con zona horaria UTC-6. 
+Corrigiendo esto, decidimos hacer inmediatamente la concatenación de las bases de datos, esto hecho verticalmente, para reducir nuestra cantidad de bases de 4 a 2, lo que simplificaría significativamente los procesos de aquí en adelante, y esto no hubiera sido posible anteriormente, pues las bases de datos contenían tipos de datos y nombres diferentes, lo que no permitiría una concatenación exitosa. Desafortunadamente, tras concatenar las bases de datos notamos que la base de datos del centro tenía una fila más que la base de datos del norte, y esto podría arruinar planes más adelante, por lo que manualmente buscamos los datos que faltaban (ya que a la hora de realizar plots, era tanto el volumen de datos que no se podían observar los faltantes) y encontramos que hacían falta 2 datos seguidos, en la fila 2654 -\> 20/04/24 12:00 y fila 2655 -\> 20/04/24 15:00. Fue gracias a la hora de las fechas que pudimos resolver este problema, y a la hora de insertar las columnas nos dimos cuenta que se añadía una fecha diferente, 6 horas posteriores a la que necesitábamos. Teorizamos que se debe a la zona horaria, y creemos que R utiliza el de la zona estándar UTC. Esto lo explicaría fácilmente porque donde estamos realizando esta limpieza de datos se encuentra en un lugar con zona horaria UTC-6.
 
 El problema ahora era que añadimos 2 observaciones (nulas) a una base, entonces ahora faltaba 1 dato en la otra, y lo buscamos del mismo modo, manualmente, pero de manera inteligente, pues si había un dato extra, solamente habría que buscar en las 2 bases el mismo dato hasta que este desfasada la fecha por 1 fila. Afortunadamente lo encontramos pronto, y fue el hecho que removimos la fila de unidades de una de las bases del 2025, pero no de la otra. Rápidamente eliminamos esta observación y quedamos con dos bases de datos de 13,128 filas y 16 columnas, como mencionamos anteriormente, para seguir con la imputación.
 
-En resumidas cuentas, para la imputación de datos, no supimos como comenzar. Sacamos total y proporciones de la cantidad de datos nulos a la cantidad de datos totales por columna, y encontramos que habían características que tenían más datos faltantes que existentes. Convertimos nuestras bases de datos a datos de tipo "ts" (time series) para visualizar los datos nulos, pero como había una cantidad enorme de observaciones, no se podían ver éstos en las tablas, por lo que pedimos a la inteligencia artificial que sugiriera algún método y llegamos a un "missmap" de la librería "Amelia" que nos ayudó a ver la cantidad de datos faltantes gráficamente, y no fue satisfactorio de observar, ya que encontramos que habían datos faltantes al azar ya sea individuales sin razón alguna, por hora, o incluso docenas de horas de un dato faltante. Con tantos datos faltantes, es difícil saber cual es el método de imputación adecuado, por lo que decidimos hacer todos los posibles para ver como se comportaban los datos tras las imputaciones, graficando QQ-Plots y Boxplots por columna. 
+En resumidas cuentas, para la imputación de datos, no supimos como comenzar. Sacamos total y proporciones de la cantidad de datos nulos a la cantidad de datos totales por columna, y encontramos que habían características que tenían más datos faltantes que existentes. Convertimos nuestras bases de datos a datos de tipo "ts" (time series) para visualizar los datos nulos, pero como había una cantidad enorme de observaciones, no se podían ver éstos en las tablas, por lo que pedimos a la inteligencia artificial que sugiriera algún método y llegamos a un "missmap" de la librería "Amelia" que nos ayudó a ver la cantidad de datos faltantes gráficamente, y no fue satisfactorio de observar, ya que encontramos que habían datos faltantes al azar ya sea individuales sin razón alguna, por hora, o incluso docenas de horas de un dato faltante. Con tantos datos faltantes, es difícil saber cual es el método de imputación adecuado, por lo que decidimos hacer todos los posibles para ver como se comportaban los datos tras las imputaciones, graficando QQ-Plots y Boxplots por columna.
 
 Las imputaciones realizadas fueron todas de la documentación de la librería ImputeTS, y fueron imputación por interpolación (na_interpolation), por LOFC (Last Observation Carried Forward - na_locf), por NOCB (Next Observation Carried Forward - na_locf, option = "nocb"), por descomposición estacional (na_seadec) y por subseries por temporadas (na_seasplit). También se tenían en mente utilizar modelos para la imputación de datos, específicamente "auto.arima" y "StructTS" de la misma librería que los demás, pero por cuestiones de tiempo, y por el gran volumen de datos, no fue posible. Estas imputaciones fueron realizadas para ambas bases de datos, pero no tenemos por seguro cual utilizar. Por lo pronto están las bases de datos en el repositorio aquellas obtenidas por LOFC en formato csv.
 
@@ -111,8 +108,95 @@ Finalmente, en cuanto a transformación de los datos, decidimos que no era neces
 
 Y finalmente, tras platicar con el socio-formador, descubrimos que es normal que de una hora a otra haya un cambio drástico en los valores de los contaminantes, y puede saltar de ceros a cientos, entonces tenemos incertidumbre en cuanto a la forma en la que podríamos tratar con los outliers, ya que también el remover valores daña a la cronología de nuestra serie.
 
-
 ### IV. Inserta una liga que de acceso a tu base de datos limpia
+
+https://github.com/CCCCC11111/MA2003B_E7/tree/trunk
+
+# Etapa 2. Conociendo los datos
+
+
+```{r}
+#| include: false
+df_centro = read.csv("DATASET_CENTRO_LIMPIO")
+df_norte = read.csv("DATASET_NORTE_LIMPIO")
+```
+
+### I. Escribe cuál es el objetivo de tu análisis y cuáles son las tecnicas estadísticas que contestarán tu objetivo.
+
+El objetivo del análisis que llevaremos a cabo es predecir los valores futuros de distintos contaminantes, estos siendo: material particulado menor a 10 micrómetros (PM10), material particulado menor a 2.5 micrómetros (PM2.5), ozono (O3), dióxido de azufre (SO2), dióxido de nitrógeno (NO2), monóxido de carbono (CO), monóxido de nitrógeno (NO), la suma de NO + NO2 (NOX). 
+
+El análisis se centrará en dos zonas meteorológicas, la primera zona meteorológica siendo “CE - Centro”, la cual está ubicada en el municipio de Monterrey, y la segunda zona meteorológica siendo “NTE - Norte”, la cual está ubicada en el municipio de Escobedo. Se seleccionaron éstas dos zonas meteorológicas con el propósito de resaltar la diferencia de los  valores de los distintos contaminantes en una zona con mayor concentración poblacional, como lo es el centro del municipio de Monterrey, a comparación de los valores de los distintos contaminantes en una zona con menor concentración poblacional, como lo es el municipio de Escobedo.
+
+El análisis será llevado a cabo mediante el uso de una regresión lineal multivariada, en donde se tienen múltiples variables dependientes o de respuesta y múltiples variables independientes o predictoras. Por un lado las variables dependientes son las siguientes: material particulado menor a 10 micrómetros (PM10), material particulado menor a 2.5 micrómetros (PM2.5), ozono (O3), dióxido de azufre (SO2), dióxido de nitrógeno (NO2), monóxido de carbono (CO), monóxido de nitrógeno (NO), la suma de NO + NO2 (NOX). Por otro lado, las variables independientes son las siguientes: fecha y hora, temperatura (TOUT), humedad relativa (RH), radiación solar (SR), precipitación (RAINF), presión atmosférica (PRS), velocidad del viento (WSR), dirección del viento (WDR).
+
+La justificación de llevar a cabo éste análisis es el convencimiento de que el análisis representa una herramienta de muchas utilidad para organismos como la Secretaría de Medio Ambiente de Nuevo León ya que, al predecir los valores futuros de los distintos contaminantes, es posible llevar a cabo medidas de prevención para prevenir valores no aceptables de los mismo.
+
+
+### II. Describe las variables que requieres para lograr tu objetivo y destaca sus principales características estadísticas.
+
+Para llevar a cabo el análisis predictivo propuesto, primero se debe de contemplar la fecha y hora de cualquier registro, esta información está guardada en la variable Fecha_y_hora. El tiempo de cada observación es crucial para la realización de un análisis ya que posibilita la determinación de diferentes períodos de menor o mayor intensidad de diferentes contaminantes en el ambiente. Esta información es necesaria para un análisis de datos históricos a través de dos años, ya que mediante herramientas como lo son las series de tiempo las cuales se basan en la utilización de información temporal se puede extraer información que describa las relaciones subyacentes entre los datos de la serie, así como extrapolar o interpolar los datos para realizar nuestro objetivo el cual es predecir el comportamiento de la serie en momentos futuros no observados.
+
+Siguiente, se deben de incluir las variables correspondientes a las diferentes concentraciones de contaminantes, estas siendo el PM10, PM2.5, O3, SO2, NO2, CO, NO y Nox. Estos datos serán útiles para que el modelo estadístico pueda encontrar tendencias y establecer las diversas relaciones que existen entre cada una de las variables y los contaminantes presentes en cualquier momento dado. El modelo estadístico necesitará estos enlaces para poder generar información nueva que extrapole desde los datos para poder predecir la información futura de mayor relevancia a nuestro análisis. A continuación se muestra
+
+Por último, se incluyen las variables pertenecientes a los factores meteorológicos. Estas son TOUT, RH, SR, RAINF, PRS, WSR y WDR. Estas se incluirán para ser utilizadas como las variables independientes dentro del modelo. Estas variables participarán para predecir valores futuros de contaminantes y establecer dependencias y relaciones entre las condiciones climatológicas y los niveles de contaminantes presentes.  
+
+A continuación se muestran varias estadísticas y análisis que se realizaron para obtener un mayor conocimiento sobre las distribuciones en cada una de las variables escogidas, así como sus correlaciones lo cual ayuda a identificar variables de interés para la realización del modelo y la presencia de colinealidad en los datos.
+
+```{r}
+#| echo: false
+cat("\n\nZona Centro")
+summary(df_centro)
+```
+
+```{r}
+#| echo: false
+
+cat("\n\nZona Norte")
+summary(df_norte)
+```
+```{r}
+#| echo: false
+var_centro =diag(var(df_centro))
+var_norte = diag(var(df_norte))
+sd_norte = sqrt(var_norte)
+sd_centro = sqrt(var_centro)
+
+#var_centro
+#var_norte
+#sd_centro
+#sd_norte
+
+cat("Zona Centro\nVarianza\n",var_centro,"\nDesviación Estandar\n",sd_centro,"\n\nZona Norte\nVarianza\n",
+    var_norte,"\nDesviación Estandar",sd_norte)
+
+```
+
+```{r}
+#| echo: false
+#| 
+cor_matrix_centro <- cor(df_centro)
+
+# Heatmap with base R
+heatmap(cor_matrix_centro,main="Zona Centro")
+```
+
+```{r}
+#| echo: false
+cor_matrix_norte <- cor(df_norte)
+
+# Heatmap with base R
+heatmap(cor_matrix_norte,main="Zona Norte")
+```
+
+También llevamos a cabo varios análisis a través de histogramas y boxplots para profundizar en el entendimiento sobre las diferentes distribuciones de datos y sus comportamientos. Estas gráficas se pueden encontrar en el archivo "comprension_de_datos.Rmd" dentro de la carpeta "Etapa2".
+
+### III. Concluye con un breve resumen de lo que has logrado hasta ahora, qué falta por hacer, qué camino piensan seguir para lograrlo, cuáles son las preguntas que te han surgido, etc
+
+### IV. No debe exceder de 5 páginas (incluyendo gráficas y tablas).
+
+### V. Incluye como anexos gráficos o tablas que creas conveniente mencionar en el texto que realizaste.
+
+### VI. Inserta una liga que dé acceso a tu(s) documento(s) de trabajo
 
 https://github.com/CCCCC11111/MA2003B_E7/tree/trunk
 
@@ -128,9 +212,9 @@ https://github.com/CCCCC11111/MA2003B_E7/tree/trunk
 
 \[5\] Secretaría de Medio Ambiente de Nuevo León. (s.f.). Sistema Integral de Monitoreo Ambiental \[SIMA\] Nuevo León. Secretaría de Medio Ambiente de Nuevo León. https://aire.nl.gob.mx/
 
-\[6\] SIMA. (2024) Datos meteorológicos y de contaminantes 2024 [Conjunto de datos] Agencia de la Calidad del Aire, N.L.
+\[6\] SIMA. (2024) Datos meteorológicos y de contaminantes 2024 \[Conjunto de datos\] Agencia de la Calidad del Aire, N.L.
 
-\[7\] SIMA. (2025) Datos meteorológicos y de contaminantes 2025 [Conjunto de datos] Agencia de la Calidad del Aire, N.L.
+\[7\] SIMA. (2025) Datos meteorológicos y de contaminantes 2025 \[Conjunto de datos\] Agencia de la Calidad del Aire, N.L.
 
 \[8\] Sustainability Directory. (2025). What Are Air Quality Monitoring Challenges? Sustainability Directory. https://pollution.sustainability-directory.com/question/what-are-air-quality-monitoring-challenges/
 
