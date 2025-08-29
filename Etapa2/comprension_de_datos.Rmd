@@ -9,7 +9,6 @@ library(ggplot2)
 library(e1071)
 ```
 
-
 ```{r}
 df_centro = read.csv("DATASET_CENTRO_LIMPIO")
 df_norte = read.csv("DATASET_NORTE_LIMPIO")
@@ -51,7 +50,6 @@ d. Exploración de datos:
 ```{r}
 summary(df_centro)
 summary(df_norte)
-
 ```
 ```{r}
 var_centro =diag(var(df_centro))
@@ -72,8 +70,8 @@ cat("Norte\nVarianza\n",var_norte,"\n\nDesviación Estandar\n",sd_norte,"\n\nCen
     
 2. Explora los datos usando herramientas de visualización
   -Variables cuantitativas:
-    -Medidas de posición no-central: cuartiles, outlier (valores atípicos),             boxplots
-    -Análisis de distribución de los datos (Histogramas). Identificar si tiene          forma simétrica o asimétrica
+    -Medidas de posición no-central: cuartiles, outlier (valores atípicos), boxplots
+    -Análisis de distribución de los datos (Histogramas). Identificar si tiene forma simétrica o asimétrica
     -Análisis de correlación  de los datos, mapa de calor
     -Distribución de los datos (diagramas de barras, diagramas de pastel)
 ```{r}
@@ -84,13 +82,12 @@ for (i in 1:length(names_data)) {
 ```
 ```{r}
 for (i in 1:length(names_data)) {
-  boxplot(df_centro[, i])
+  boxplot(df_norte[, i])
 }
 ```
 ```{r}
 cor_matrix_centro <- cor(df_centro)
 
-# Heatmap with base R
 heatmap(cor_matrix_centro)
 
 corrplot(cor_matrix_centro, method = "color", type = "upper", tl.cex = 0.8)
@@ -98,7 +95,6 @@ corrplot(cor_matrix_centro, method = "color", type = "upper", tl.cex = 0.8)
 ```{r}
 cor_matrix_norte <- cor(df_norte)
 
-# Heatmap with base R
 heatmap(cor_matrix_norte)
 
 corrplot(cor_matrix_norte, method = "color", type = "upper", tl.cex = 0.8)
@@ -112,10 +108,8 @@ for (i in 1:length(names_data)) {
   skewness = skewness(x, type = 2)
   kurtosis = kurtosis(x, type = 2)
   cat("skewness of ",names_data[i],": ", skewness, "\n")
-  cat("kurtosis of ",names_data[i], ": ", kurtosis, "\n")
-  
+  cat("kurtosis of ",names_data[i], ": ", kurtosis, "\n\n")
 }
-
 ```
 ```{r}
 for (i in 1:length(names_data)) {
@@ -125,8 +119,7 @@ for (i in 1:length(names_data)) {
   skewness = skewness(x, type = 2)
   kurtosis = kurtosis(x, type = 2)
   cat("skewness of ",names_data[i],": ", skewness, "\n")
-  cat("kurtosis of ",names_data[i], ": ", kurtosis, "\n")
-  
+  cat("kurtosis of ",names_data[i], ": ", kurtosis, "\n\n")
 }
 ```
 

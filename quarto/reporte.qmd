@@ -192,11 +192,13 @@ También llevamos a cabo varios análisis a través de histogramas y boxplots pa
 
 ### III. Concluye con un breve resumen de lo que has logrado hasta ahora, qué falta por hacer, qué camino piensan seguir para lograrlo, cuáles son las preguntas que te han surgido, etc
 
-### IV. No debe exceder de 5 páginas (incluyendo gráficas y tablas).
+Tenemos ya una base de datos limpia y fácil de utilizar, de manera que todas las variables puede ser utilizadas ya para la creación de un modelo sin mucho trabajo. Gracias también a este trabajo anterior, hemos logrado entender la naturaleza de cada una de las variables. Analizamos la forma de las distribuciones que éstas forman utilizando medidas de tendencia central y dispersión. Ya que obtuvimos una mejor comprensión de los datos, nos dimos una idea de lo que podemos lograr con esta base proporcionada y las herramientas de análisis con las que contamos. Ahora debemos definir bien el objetivo de nuestro trabajo a futuro para saber qué camino seguir.
 
-### V. Incluye como anexos gráficos o tablas que creas conveniente mencionar en el texto que realizaste.
+Dentro de las cosas que quedan por hacer, primeramente está mejorar el método de imputación que ya tenemos, ya que comenzamos con un método de imputación sencillo que simplemente toma el valor anterior al dato que necesitamos imputar, pero este método en cuanto a nuestro análisis de series de tiempo no consideramos que sea confiable, ya que dentro de nuestro análisis encontramos que es normal que de 1 hora a otra haya un cambio drástico en los valores de algunos contaminantes, y esto no se puede ver reflejado simplemente tomando el dato anterior, es por eso que queremos implementar un modelo de imputación de datos que sea más confiable que hacer una simple interpolación para tener un dataset más limpio, eficaz y confiable. 
 
-### VI. Inserta una liga que dé acceso a tu(s) documento(s) de trabajo
+Tras realizar eso solamente quedaría seleccionar y crear los modelos que elegiremos dentro de la siguiente etapa del reto, se nos menciona que se necesita hacer una técnica estadística de análisis de relaciones de dependencia y una técnica estadística de análisis de relaciones de independencia, por lo tanto, utilizando nuestro dataset, vamos a intentar realizar una regresión multivariada como técnica relacionada con la dependencia de variables, y probablemente un análisis de componentes principales para la técnica sobre independencia, y una vez teniendo nuestro modelo, seguiría el proceso habitual de validación y finalmente realizar las interpretaciones para un análisis exitoso que sea sencillo de compartir con la organización socio formadora.
+
+### IV. Inserta una liga que dé acceso a tu(s) documento(s) de trabajo
 
 https://github.com/CCCCC11111/MA2003B_E7/tree/trunk
 
