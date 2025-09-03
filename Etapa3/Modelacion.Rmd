@@ -1,0 +1,423 @@
+---
+title: "Modelación"
+author: "Equipo 7"
+date: "2025-09-03"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+```{r}
+library(GGally)
+library(MVN)
+```
+
+```{r}
+df_centro = read.csv("DATASET_CENTRO_LIMPIO")
+df_norte = read.csv("DATASET_NORTE_LIMPIO")
+
+
+names <- c("X","Fecha_y_hora","CO","NO","NO2","NOX","O3","PM10","PM25","PRS","RAINF","RH","SO2","SR",
+           "TOUT","WSR","WDR")
+
+names(df_centro) <- names
+names(df_norte) <- names
+```
+
+# CENTRO
+
+## Part 1: Baseline Full Model
+1. Build the full multiple regression model
+
+```{r}
+model_ce <- lm(cbind(CO, NO, NO2, NOX, O3, PM10, PM25, SO2) ~ Fecha_y_hora + PRS + RAINF + RH + SR + TOUT + WSR + WDR, data = df_centro)
+
+summary(model_ce)
+```
+
+## Part 2: Forward and Backward Selection
+
+### CO
+```{r}
+data <- df_centro[, c("Fecha_y_hora","CO",
+                      "PRS","RAINF","RH","SR","TOUT","WSR","WDR")]
+
+null_model <- lm(CO ~ 1, data = data)
+full_model <- lm(CO ~ ., data = data)
+
+model_forward <- step(null_model,
+                      scope = formula(full_model),
+                      direction = "forward",
+                      trace = TRUE)
+
+summary(model_forward)
+
+model_backward <- step(full_model,
+                       direction = "backward",
+                       trace = TRUE)
+summary(model_backward)
+```
+
+### NO
+```{r}
+data <- df_centro[, c("Fecha_y_hora","NO",
+                      "PRS","RAINF","RH","SR","TOUT","WSR","WDR")]
+
+null_model <- lm(NO ~ 1, data = data)
+full_model <- lm(NO ~ ., data = data)
+
+model_forward <- step(null_model,
+                      scope = formula(full_model),
+                      direction = "forward",
+                      trace = TRUE)
+
+summary(model_forward)
+
+model_backward <- step(full_model,
+                       direction = "backward",
+                       trace = TRUE)
+summary(model_backward)
+```
+
+### NO2
+```{r}
+data <- df_centro[, c("Fecha_y_hora","NO2",
+                      "PRS","RAINF","RH","SR","TOUT","WSR","WDR")]
+
+null_model <- lm(NO2 ~ 1, data = data)
+full_model <- lm(NO2 ~ ., data = data)
+
+model_forward <- step(null_model,
+                      scope = formula(full_model),
+                      direction = "forward",
+                      trace = TRUE)
+
+summary(model_forward)
+
+model_backward <- step(full_model,
+                       direction = "backward",
+                       trace = TRUE)
+summary(model_backward)
+```
+
+### NOX
+```{r}
+data <- df_centro[, c("Fecha_y_hora","NOX",
+                      "PRS","RAINF","RH","SR","TOUT","WSR","WDR")]
+
+null_model <- lm(NOX ~ 1, data = data)
+full_model <- lm(NOX ~ ., data = data)
+
+model_forward <- step(null_model,
+                      scope = formula(full_model),
+                      direction = "forward",
+                      trace = TRUE)
+
+summary(model_forward)
+
+model_backward <- step(full_model,
+                       direction = "backward",
+                       trace = TRUE)
+summary(model_backward)
+```
+
+### O3
+```{r}
+data <- df_centro[, c("Fecha_y_hora","O3",
+                      "PRS","RAINF","RH","SR","TOUT","WSR","WDR")]
+
+null_model <- lm(O3 ~ 1, data = data)
+full_model <- lm(O3 ~ ., data = data)
+
+model_forward <- step(null_model,
+                      scope = formula(full_model),
+                      direction = "forward",
+                      trace = TRUE)
+
+summary(model_forward)
+
+model_backward <- step(full_model,
+                       direction = "backward",
+                       trace = TRUE)
+summary(model_backward)
+```
+
+### PM10
+```{r}
+data <- df_centro[, c("Fecha_y_hora","PM10",
+                      "PRS","RAINF","RH","SR","TOUT","WSR","WDR")]
+
+null_model <- lm(PM10 ~ 1, data = data)
+full_model <- lm(PM10 ~ ., data = data)
+
+model_forward <- step(null_model,
+                      scope = formula(full_model),
+                      direction = "forward",
+                      trace = TRUE)
+
+summary(model_forward)
+
+model_backward <- step(full_model,
+                       direction = "backward",
+                       trace = TRUE)
+summary(model_backward)
+```
+
+### PM25
+```{r}
+data <- df_centro[, c("Fecha_y_hora","PM25",
+                      "PRS","RAINF","RH","SR","TOUT","WSR","WDR")]
+
+null_model <- lm(PM25 ~ 1, data = data)
+full_model <- lm(PM25 ~ ., data = data)
+
+model_forward <- step(null_model,
+                      scope = formula(full_model),
+                      direction = "forward",
+                      trace = TRUE)
+
+summary(model_forward)
+
+model_backward <- step(full_model,
+                       direction = "backward",
+                       trace = TRUE)
+summary(model_backward)
+```
+
+### SO2
+```{r}
+data <- df_centro[, c("Fecha_y_hora","SO2",
+                      "PRS","RAINF","RH","SR","TOUT","WSR","WDR")]
+
+null_model <- lm(SO2 ~ 1, data = data)
+full_model <- lm(SO2 ~ ., data = data)
+
+model_forward <- step(null_model,
+                      scope = formula(full_model),
+                      direction = "forward",
+                      trace = TRUE)
+
+summary(model_forward)
+
+model_backward <- step(full_model,
+                       direction = "backward",
+                       trace = TRUE)
+summary(model_backward)
+```
+
+# NORTE
+
+## Part 1: Baseline Full Model
+1. Build the full multiple regression model
+
+```{r}
+model_nte <- lm(cbind(CO,NO,NO2,NOX,O3,PM10,PM25,SO2) ~ Fecha_y_hora + PRS + RAINF + RH + SR + TOUT + WSR + WDR, data = df_norte)
+
+summary(model_nte)
+```
+
+## Part 2: Forward and Backward Selection
+
+### CO
+```{r}
+data <- df_norte[, c("Fecha_y_hora","CO",
+                      "PRS","RAINF","RH","SR","TOUT","WSR","WDR")]
+
+null_model <- lm(CO ~ 1, data = data)
+full_model <- lm(CO ~ ., data = data)
+
+model_forward <- step(null_model,
+                      scope = formula(full_model),
+                      direction = "forward",
+                      trace = TRUE)
+
+summary(model_forward)
+
+model_backward <- step(full_model,
+                       direction = "backward",
+                       trace = TRUE)
+summary(model_backward)
+```
+
+### NO
+```{r}
+data <- df_norte[, c("Fecha_y_hora","NO",
+                      "PRS","RAINF","RH","SR","TOUT","WSR","WDR")]
+
+null_model <- lm(NO ~ 1, data = data)
+full_model <- lm(NO ~ ., data = data)
+
+model_forward <- step(null_model,
+                      scope = formula(full_model),
+                      direction = "forward",
+                      trace = TRUE)
+
+summary(model_forward)
+
+model_backward <- step(full_model,
+                       direction = "backward",
+                       trace = TRUE)
+summary(model_backward)
+```
+
+### NO2
+```{r}
+data <- df_norte[, c("Fecha_y_hora","NO2",
+                      "PRS","RAINF","RH","SR","TOUT","WSR","WDR")]
+
+null_model <- lm(NO2 ~ 1, data = data)
+full_model <- lm(NO2 ~ ., data = data)
+
+model_forward <- step(null_model,
+                      scope = formula(full_model),
+                      direction = "forward",
+                      trace = TRUE)
+
+summary(model_forward)
+
+model_backward <- step(full_model,
+                       direction = "backward",
+                       trace = TRUE)
+summary(model_backward)
+```
+
+### NOX
+```{r}
+data <- df_norte[, c("Fecha_y_hora","NOX",
+                      "PRS","RAINF","RH","SR","TOUT","WSR","WDR")]
+
+null_model <- lm(NOX ~ 1, data = data)
+full_model <- lm(NOX ~ ., data = data)
+
+model_forward <- step(null_model,
+                      scope = formula(full_model),
+                      direction = "forward",
+                      trace = TRUE)
+
+summary(model_forward)
+
+model_backward <- step(full_model,
+                       direction = "backward",
+                       trace = TRUE)
+summary(model_backward)
+```
+
+### O3
+```{r}
+data <- df_norte[, c("Fecha_y_hora","O3",
+                      "PRS","RAINF","RH","SR","TOUT","WSR","WDR")]
+
+null_model <- lm(O3 ~ 1, data = data)
+full_model <- lm(O3 ~ ., data = data)
+
+model_forward <- step(null_model,
+                      scope = formula(full_model),
+                      direction = "forward",
+                      trace = TRUE)
+
+summary(model_forward)
+
+model_backward <- step(full_model,
+                       direction = "backward",
+                       trace = TRUE)
+summary(model_backward)
+```
+
+### PM10
+```{r}
+data <- df_norte[, c("Fecha_y_hora","PM10",
+                      "PRS","RAINF","RH","SR","TOUT","WSR","WDR")]
+
+null_model <- lm(PM10 ~ 1, data = data)
+full_model <- lm(PM10 ~ ., data = data)
+
+model_forward <- step(null_model,
+                      scope = formula(full_model),
+                      direction = "forward",
+                      trace = TRUE)
+
+summary(model_forward)
+
+model_backward <- step(full_model,
+                       direction = "backward",
+                       trace = TRUE)
+summary(model_backward)
+```
+
+### PM25
+```{r}
+data <- df_norte[, c("Fecha_y_hora","PM25",
+                      "PRS","RAINF","RH","SR","TOUT","WSR","WDR")]
+
+null_model <- lm(PM25 ~ 1, data = data)
+full_model <- lm(PM25 ~ ., data = data)
+
+model_forward <- step(null_model,
+                      scope = formula(full_model),
+                      direction = "forward",
+                      trace = TRUE)
+
+summary(model_forward)
+
+model_backward <- step(full_model,
+                       direction = "backward",
+                       trace = TRUE)
+summary(model_backward)
+```
+
+### SO2
+```{r}
+data <- df_norte[, c("Fecha_y_hora","SO2",
+                      "PRS","RAINF","RH","SR","TOUT","WSR","WDR")]
+
+null_model <- lm(SO2 ~ 1, data = data)
+full_model <- lm(SO2 ~ ., data = data)
+
+model_forward <- step(null_model,
+                      scope = formula(full_model),
+                      direction = "forward",
+                      trace = TRUE)
+
+summary(model_forward)
+
+model_backward <- step(full_model,
+                       direction = "backward",
+                       trace = TRUE)
+summary(model_backward)
+```
+
+# Centro O3
+
+```{r}
+model_ce_o3 <- lm(O3 ~ Fecha_y_hora + PRS + RAINF + RH + SR + TOUT + WSR + WDR, data = df_centro)
+
+summary(model_ce_o3)
+```
+
+# Tests
+
+```{r}
+ggpairs(df_centro[, c(2, 10:12 , 14:17)])
+```
+
+```{r}
+result = mvn(df_centro, mvn_test = "mardia", alpha = 0.05)
+result$multivariate_normality
+```
+
+```{r}
+result$univariate_normality
+```
+
+```{r}
+qqnorm(residuals(model_ce_o3))
+qqline(residuals(model_ce_o3), col="red")
+```
+
+```{r}
+par(mfrow = c(2,2))
+plot(model_ce_o3)
+```
+

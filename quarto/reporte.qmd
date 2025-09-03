@@ -204,6 +204,12 @@ Finalmente, a lo largo de la realización del proyecto nos han surgido las sigui
 
 https://github.com/CCCCC11111/MA2003B_E7/tree/trunk
 
+# Etapa 3. Adecuación y/o validación del Modelo
+
+### I. Objetivo del análisis
+
+### II. Logros y resultados obtenidos
+
 ### Fuentes bibliográficas y de datos
 
 \[1\] airly. (s.f.). 5 Benefits of Air Quality Monitoring. airly. https://airly.org/en/5-benefits-of-air-quality-monitoring/

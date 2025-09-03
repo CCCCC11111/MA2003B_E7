@@ -86,14 +86,14 @@ for (i in 1:length(names_data)) {
 }
 ```
 ```{r}
-cor_matrix_centro <- cor(df_centro)
+cor_matrix_centro <- cor(df_centro[,3:17])
 
 heatmap(cor_matrix_centro)
 
 corrplot(cor_matrix_centro, method = "color", type = "upper", tl.cex = 0.8)
 ```
 ```{r}
-cor_matrix_norte <- cor(df_norte)
+cor_matrix_norte <- cor(df_norte[,3:17])
 
 heatmap(cor_matrix_norte)
 
@@ -142,4 +142,3 @@ desc_NT <- data.frame(
 )
 desc_NT
 ```
-
