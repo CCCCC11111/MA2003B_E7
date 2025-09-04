@@ -44,7 +44,7 @@ for (i in 1:length(names_data)) {
 Intentamos también con los métodos auto.arima y StructTS, pero tomaba demasiado tiempo entrenar los modelos para que imputaran los datos en todo el dataset, por lo que por temas de tiempo decidimos posponerlo.
 
 ```{r}
-#dataset_CE_arima <- na_kalman(ts_CE, model = "auto.arima")
+dataset_CE_arima <- na_kalman(ts_CE, model = "auto.arima")
 ```
 
 ```{r}
@@ -207,4 +207,15 @@ Momentaneamente tomaremos el método de imputación LOFC y luego elegiremos el m
 write.csv(dataset_CE_LOFC, "DATASET_CENTRO_LIMPIO")
 
 write.csv(dataset_NTE_LOFC, "DATASET_NORTE_LIMPIO")
+```
+
+```{r}
+write.csv(dataset_CE_arima, "DATASET_CENTRO_LIMPIO2")
+```
+
+
+```{r}
+dataset_NTE_arima <- na_kalman(ts_NTE, model = "auto.arima")
+
+write.csv(dataset_NTE_arima, "DATASET_NORTE_LIMPIO2")
 ```
