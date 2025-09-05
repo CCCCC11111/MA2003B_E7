@@ -267,6 +267,7 @@ Ahora, se llevará a cabo un análisis de la matriz de correlación para examina
 
 ```{r}
 #| echo: false
+library(GGally)
 ggpairs(df_centro[, c(2, 10:12 , 14:17)], title = "Correlation matrix with graphs")
 ```
 
@@ -281,6 +282,13 @@ Aprovechando que estamos a una semana de concluir con este reto, es buen momento
 La imputación de datos fue relativamente sencilla, pues afortunadamente tras convertir nuestras bases de datos a objetos “Time series” pudimos aprovechar de los diferentes métodos de imputación que ya están establecidos, y probamos todos los que harían sentido, como interpolación sencilla, Last Observation Carried Forward, Next Observation Carried Backward, entre otros, y nos dimos cuenta que la imputación realmente solo ayudaba a completar los datos, pero no realizaba un cambio drástico en las tendencias de los datos, así que decidimos utilizar un modelo de imputación para realizar esto, siendo el modelo “auto.arima” de la función “na_kalman” de la librería “imputeTS”, ya que el objetivo principal del proyecto es predecir, y este modelo fue creado con este mismo propósito. El proceso tomó alrededor de unas 14 horas para correr, a diferencia de los otros métodos, que tomaban minutos en conjunto, y terminamos con datos relativamente bien imputados, para los cuales realizamos Q-Q plots y boxplots por variable para buscar normalidad y comenzar este análisis.
 
 Y para comenzar el análisis decidimos aplicar tres técnicas de regresión, una multivariada y dos de regresión múltiple por variable dependiente. El primero fue un método multivariado utilizando absolutamente todos los contaminantes como variables independientes y todos los factores meteorológicos como variables dependientes. El segundo fue realizado empleando la técnica de regresión “forward selection”, en el que el modelo empezaba vacío, y utilizando el valor de la métrica “Akaike Information Criterion” (AIC), automáticamente se decidía qué variables serían las más relevantes a utilizar para el modelo de regresión, así hasta que esta métrica de criterio no tuviera un cambio significativo. Finalmente el tercer modelo se realizó empleando la técnica de regresión “backward elimination”, en el que, similar al “forward selection”, se seleccionan variables pero en este caso, en vez de comenzar vacío, el modelo comienza con todas las variables y se van removiendo hasta quedar solamente con las que se consideren relevantes. Esto se realizó por zona, por lo que al final del análisis terminamos con un total de 34 modelos diferentes de los cuales hicimos gráficas para interpretar.
+
+Lo único que faltaría por hacer sería un análisis más exhaustivo de lo que ya tenemos para buscar más tendencias, encontrar relaciones no vistas anteriormente entre las variables que puedan ayudarnos a tener mejores interpretaciones, y de ser necesario, realizar algún análisis estadístico como el análisis de factores o por  componentes principales, pero por lo que vemos del proyecto y nuestros objetivos, no parece ser necesario.
+
+### III. Inserta la liga que dé acceso al código de tu trabajo
+
+https://github.com/CCCCC11111/MA2003B_E7/tree/trunk
+
 
 ### Fuentes bibliográficas y de datos
 
