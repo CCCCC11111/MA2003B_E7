@@ -5,18 +5,21 @@ date: "2025-09-03"
 output: html_document
 ---
 
+# INICIO
+
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(echo = TRUE)
 ```
 
 ```{r}
+library(corrplot)
 library(GGally)
 library(MVN)
 ```
 
 ```{r}
-df_centro = read.csv("DATASET_CENTRO_LIMPIO")
-df_norte = read.csv("DATASET_NORTE_LIMPIO")
+df_centro = read.csv("DATASET_CENTRO_LIMPIO2")
+df_norte = read.csv("DATASET_NORTE_LIMPIO2")
 
 
 names <- c("X","Fecha_y_hora","CO","NO","NO2","NOX","O3","PM10","PM25","PRS","RAINF","RH","SO2","SR",
@@ -399,7 +402,19 @@ summary(model_ce_o3)
 # Tests
 
 ```{r}
-ggpairs(df_centro[, c(2, 10:12 , 14:17)])
+color_test <- model_ce$coefficients[-1, ]
+color_means <- rowMeans(abs(color_test))
+df_centro["value"] <- cut(color_means, breaks = 8)
+```
+
+```{r}
+ggpairs(df_centro[, c(2, 10:12 , 14:17)], title = "Correlation matrix with graphs", mapping = aes(color = df_centro$value))
+```
+
+
+
+```{r}
+corrplot(cor(df_centro[, c(2, 10:12 , 14:17)]), method = "color", type = "upper", tl.cex = 0.8)
 ```
 
 ```{r}
@@ -412,12 +427,17 @@ result$univariate_normality
 ```
 
 ```{r}
-qqnorm(residuals(model_ce_o3))
-qqline(residuals(model_ce_o3), col="red")
+plot(model_ce_o3,which=1,lwd=3)
 ```
 
 ```{r}
-par(mfrow = c(2,2))
-plot(model_ce_o3)
+plot(model_ce_o3,which=2)
 ```
 
+```{r}
+plot(model_ce_o3,which=3,lwd=3)
+```
+
+```{r}
+plot(model_ce_o3,which=5,lwd=3)
+```

@@ -206,9 +206,71 @@ https://github.com/CCCCC11111/MA2003B_E7/tree/trunk
 
 # Etapa 3. Adecuación y/o validación del Modelo
 
-### I. Objetivo del análisis
+### I. Objetivo y resultados del análisis
 
-### II. Logros y resultados obtenidos
+El objetivo del análisis que se llevará a cabo es, mediante el uso de técnicas estadísticas, generar modelos de regresión lineal que sean capaces de modelar el comportamiento de al menos uno de los distintos contaminantes, estos siendo: material particulado menor a 10 micrómetros (PM10), material particulado menor a 2.5 micrómetros (PM2.5), ozono (O3), dióxido de azufre (SO2), dióxido de nitrógeno (NO2), monóxido de carbono (CO), monóxido de nitrógeno (NO), la suma de NO + NO2 (NOX). Cabe destacar que el objetivo del análisis ha sido el mismo desde que se inició con este reto.
+
+El análisis se centrará en los años 2024 y 2025, con el objetivo de evitar el sesgo debido a las consecuencias de la pandemia del COVID-19, de dos zonas meteorológicas, la primera zona meteorológica siendo “CE - Centro”, la cual está ubicada en el municipio de Monterrey, y la segunda zona meteorológica siendo “NTE - Norte”, la cual está ubicada en el municipio de Escobedo. Se seleccionaron estas dos zonas meteorológicas con el propósito de llevar a cabo el análisis en dos zonas con concentraciones poblacionales distintas. Por un lado, el centro del municipio de Monterrey es una zona con una concentración poblacional alta comparada con las zonas a su alrededor, especialmente el municipio de Escobedo, mientras que, por otro lado, el municipio de Escobedo es una zona con una concentración poblacional baja, comparada con el centro del municipio de Monterrey. Cabe destacar que los años y las zonas meteorológicas, en las cuales se centrará el análisis, han sido las mismas desde que se inició con este reto.
+
+El análisis se llevará a cabo, para cada zona meteorológica, mediante el uso de, en primer lugar, un modelo de regresión lineal multivariada, en donde se tienen múltiples variables dependientes o de respuesta y múltiples variables independientes o predictoras. Por un lado las variables dependientes son las siguientes: material particulado menor a 10 micrómetros (PM10), material particulado menor a 2.5 micrómetros (PM2.5), ozono (O3), dióxido de azufre (SO2), dióxido de nitrógeno (NO2), monóxido de carbono (CO), monóxido de nitrógeno (NO), la suma de NO + NO2 (NOX). Por otro lado, las variables independientes son las siguientes: fecha y hora, temperatura (TOUT), humedad relativa (RH), radiación solar (SR), precipitación (RAINF), presión atmosférica (PRS), velocidad del viento (WSR), dirección del viento (WDR). Ya habiendo llevado a cabo el modelo de regresión lineal, como primer acercamiento, se llevará a cabo, en segundo lugar, el método “forward selection”, el cual inicializa el modelo de regresión lineal con la variable dependiente y ninguna variable independiente y va seleccionando, una por una, las variables independientes que mejoren el modelo hasta que éste ya no mejore, y el método “backward elimination”, el cual inicializa el modelo de regresión lineal con la variable dependiente y todas las variables independientes y va eliminando, una por una, las variables independientes que empeoren el modelo hasta que éste ya no mejore, para cada una de las variables dependientes. Ya habiendo llevado a cabo lo anterior, se seleccionará el modelo o los modelos de regresión lineal que muestre o muestren mejores resultados estadísticos y se llevarán a cabo pruebas de los supuestos del modelo de regresión lineal, estos siendo: linealidad, homocedasticidad (varianza constante), normalidad multivariante (normalidad de errores), independencia de las observaciones (ausencia de autocorrelación) y falta de multicolinealidad (regresión lineal múltiple). Las técnicas estadísticas que se llevarán a cabo para llevar a cabo estas pruebas son las siguientes: “Residuals vs Fitted”, “Normal Q-Q”, “Scale-Location”, matriz de correlación. 
+
+La justificación de llevar a cabo éste análisis es el convencimiento de que el análisis representa una herramienta de mucha utilidad para organismos como la Secretaría de Medio Ambiente de Nuevo León ya que, al generar modelos de regresión lineal que sean capaces de modelar el comportamiento de al menos uno de los distintos contaminantes, es posible llevar a cabo medidas de prevención para uno o más contaminantes, los cuales representan un riesgo para la salud de la población.
+
+Después de realizar el modelo de regresión lineal multivariada y los métodos de “forward selection” y “backward elimination” para cada zona y contaminante, se llegó a la conclusión de que el modelo con mejor desempeño es el correspondiente al modelo con variable de respuesta ozono (O3). Este modelo contó con estadísticas de desempeño bastante satisfactorias, las cuales son las siguientes:
+
+```{r}
+#| echo: false
+df_centro = read.csv("DATASET_CENTRO_LIMPIO2")
+
+names <- c("X","Fecha_y_hora","CO","NO","NO2","NOX","O3","PM10","PM25","PRS","RAINF","RH","SO2","SR",
+           "TOUT","WSR","WDR")
+
+names(df_centro) <- names
+
+model_ce_o3 <- lm(O3 ~ Fecha_y_hora + PRS + RAINF + RH + SR + TOUT + WSR + WDR, data = df_centro)
+
+summary(model_ce_o3)
+```
+
+El modelo resultó de la siguiente manera:
+$$O3=(-1.148e-07)FECHA + (-7.600e-02)PRS + (-7.810e-01)RAINF + (-4.060e-01)RH + (1.989e+01)SR + (4.533e-01)TOUT + (1.178e+00)WSR + (-1.962e-02)WDR + 2.846e+02$$
+Este modelo logró una estadística de R$^2$ de 0.6215, lo que significa que el modelo logra explicar el 62.15% de la variabilidad que se encuentra en los datos; esto siendo más de la mitad es un resultado satisfactorio. Después se puede observar la distribución del error mediante el apartado de residuales, el cual se acerca abstante a una distribución normal, sin embargo esta parte del análisis se profundizará en una medida más definitiva más adelante mediante una plot Q-Q. Siguiente, los valores probabilísticos "p-values" son en su mayoría muy pequeños, lo que indica un alto nivel de significanacia para los predictores dentro del modelo. Por último, se cuenta con la estadística del error estándar residual de 13.31, este siendo un valor satisfactorio gracias a su bajo valor el cual indica que el error general del modelo también es bajo. 
+
+Para llevar a cabo un análisis más profundo de los diferentes supuestos que conlleva la realización de un modelo de regresión lineal, se realizó la siguiente gráfica.
+
+```{r}
+#| echo: false
+plot(model_ce_o3,which=1,lwd=3)
+```
+
+En este caso, los datos graficados representan los valores predichos y sus correspondientes residuales. En esta gráfica, se busca que los puntos no muestren un patrón claro, con el fin de probar el supuesto de homocedasaticidad. Como este es el caso en la gráfica, se procede a analizar los siguientes supuestos.
+
+Segundo, se realiza un Q-Q plot para examinar la distribución de los errores a través de los datos.
+
+```{r}
+#| echo: false
+plot(model_ce_o3,which=2,lwd=3)
+```
+
+La gráfica muestra los quantiles de una distribución normal graficados con los valores de los residuales del modelo estandarizados. En la gráfica se puede observar una línea recta, la cual representa la distribución de los puntos ideal correspondiente a una distribución normal. Mientras más se alejen los puntos de la línea recta, más se alejan los residuales de una distribución normal. Se concluyó que aunque los datos ciertamente no se comportan de manera perfecta, presentan una distribución muy cercana a la normal, por lo que se prueba otro de los supuestos y se procede al siguiente análisis.
+
+Siguiente, se procede a una gráfica de Scale-Location.
+
+```{r}
+#| echo: false
+plot(model_ce_o3,which=3,lwd=3)
+```
+
+Con esta gráfica se busca probar de nuevo la homocedasticidad, o varianza constante. Una vez más, lo ideal es que los datos no muestren un patrón claro y que se comporten lo más aleatoriamente posible. Este siendo el caso aquí, se concluye que los datos presentan homocedasticidad.
+
+Ahora, se llevará a cabo un análisis de la matriz de correlación para examinar la presencia o ausencia de multicolinealidad.
+
+```{r}
+#| echo: false
+ggpairs(df_centro[, c(2, 10:12 , 14:17)], title = "Correlation matrix with graphs", mapping = aes(color = df_centro$value))
+```
+
+Como es observable, ninguna de las variables predictoras presentan un nivel de correlación lo suficientemente alto como para crear un conflicto de multicolinealidad, lo cual llevaría a un sobreajuste dentro del modelo predictivo. Gracias a los resultados gráficos obtenidos, se concluye que no existe colinealidad en los datos y se prueba el supuesto correspondiente. 
 
 ### Fuentes bibliográficas y de datos
 
