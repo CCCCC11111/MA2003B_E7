@@ -399,31 +399,14 @@ model_ce_o3 <- lm(O3 ~ Fecha_y_hora + PRS + RAINF + RH + SR + TOUT + WSR + WDR, 
 summary(model_ce_o3)
 ```
 
-# Tests
+# Test
 
 ```{r}
-color_test <- model_ce$coefficients[-1, ]
-color_means <- rowMeans(abs(color_test))
-df_centro["value"] <- cut(color_means, breaks = 8)
+ggpairs(df_centro[, c(2, 10:12 , 14:17)], title = "Correlation matrix with graphs")
 ```
-
-```{r}
-ggpairs(df_centro[, c(2, 10:12 , 14:17)], title = "Correlation matrix with graphs", mapping = aes(color = df_centro$value))
-```
-
-
 
 ```{r}
 corrplot(cor(df_centro[, c(2, 10:12 , 14:17)]), method = "color", type = "upper", tl.cex = 0.8)
-```
-
-```{r}
-result = mvn(df_centro, mvn_test = "mardia", alpha = 0.05)
-result$multivariate_normality
-```
-
-```{r}
-result$univariate_normality
 ```
 
 ```{r}

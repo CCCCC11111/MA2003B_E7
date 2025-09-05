@@ -267,10 +267,20 @@ Ahora, se llevará a cabo un análisis de la matriz de correlación para examina
 
 ```{r}
 #| echo: false
-ggpairs(df_centro[, c(2, 10:12 , 14:17)], title = "Correlation matrix with graphs", mapping = aes(color = df_centro$value))
+ggpairs(df_centro[, c(2, 10:12 , 14:17)], title = "Correlation matrix with graphs")
 ```
 
 Como es observable, ninguna de las variables predictoras presentan un nivel de correlación lo suficientemente alto como para crear un conflicto de multicolinealidad, lo cual llevaría a un sobreajuste dentro del modelo predictivo. Gracias a los resultados gráficos obtenidos, se concluye que no existe colinealidad en los datos y se prueba el supuesto correspondiente. 
+
+### II. Conclusión
+
+Resumen de lo que hemos logrado hasta ahora:
+
+Aprovechando que estamos a una semana de concluir con este reto, es buen momento de reflexionar sobre lo que hemos logrado hasta ahora y las cosas que siguen por delante. Regresemos por un momento a la limpieza de las bases de datos, primer paso de esta situación problema y la clave de realizar un buen análisis de datos. Nos dimos cuenta que las bases tenían los nombres de las columnas diferentes, y no solo eso, sino que también había tipos de datos inconsistentes entre los diferentes años utilizados, cosa que también tuvimos que corregir. Afortunadamente, entre estas y muchas otras, pudimos sobreponer cada una de las dificultades que se nos presentaron a la hora de realizar la limpieza de datos y terminar reduciendo de un total de cuatro data sets a solamente dos divididos por lugar y que incluyan ambos años que nos dieron, esto para poder realizar un análisis más sencillo, pero para este punto aún había bastantes datos faltantes, por lo que había que pasar a realizar una imputación.
+
+La imputación de datos fue relativamente sencilla, pues afortunadamente tras convertir nuestras bases de datos a objetos “Time series” pudimos aprovechar de los diferentes métodos de imputación que ya están establecidos, y probamos todos los que harían sentido, como interpolación sencilla, Last Observation Carried Forward, Next Observation Carried Backward, entre otros, y nos dimos cuenta que la imputación realmente solo ayudaba a completar los datos, pero no realizaba un cambio drástico en las tendencias de los datos, así que decidimos utilizar un modelo de imputación para realizar esto, siendo el modelo “auto.arima” de la función “na_kalman” de la librería “imputeTS”, ya que el objetivo principal del proyecto es predecir, y este modelo fue creado con este mismo propósito. El proceso tomó alrededor de unas 14 horas para correr, a diferencia de los otros métodos, que tomaban minutos en conjunto, y terminamos con datos relativamente bien imputados, para los cuales realizamos Q-Q plots y boxplots por variable para buscar normalidad y comenzar este análisis.
+
+Y para comenzar el análisis decidimos aplicar tres técnicas de regresión, una multivariada y dos de regresión múltiple por variable dependiente. El primero fue un método multivariado utilizando absolutamente todos los contaminantes como variables independientes y todos los factores meteorológicos como variables dependientes. El segundo fue realizado empleando la técnica de regresión “forward selection”, en el que el modelo empezaba vacío, y utilizando el valor de la métrica “Akaike Information Criterion” (AIC), automáticamente se decidía qué variables serían las más relevantes a utilizar para el modelo de regresión, así hasta que esta métrica de criterio no tuviera un cambio significativo. Finalmente el tercer modelo se realizó empleando la técnica de regresión “backward elimination”, en el que, similar al “forward selection”, se seleccionan variables pero en este caso, en vez de comenzar vacío, el modelo comienza con todas las variables y se van removiendo hasta quedar solamente con las que se consideren relevantes. Esto se realizó por zona, por lo que al final del análisis terminamos con un total de 34 modelos diferentes de los cuales hicimos gráficas para interpretar.
 
 ### Fuentes bibliográficas y de datos
 
