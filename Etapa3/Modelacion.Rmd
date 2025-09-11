@@ -18,9 +18,8 @@ library(MVN)
 ```
 
 ```{r}
-df_centro = read.csv("DATASET_CENTRO_LIMPIO2")
-df_norte = read.csv("DATASET_NORTE_LIMPIO2")
-
+df_centro = read.csv("DATASET_CENTRO_ESCALADO")
+df_norte = read.csv("DATASET_NORTE_ESCALADO")
 
 names <- c("X","Fecha_y_hora","CO","NO","NO2","NOX","O3","PM10","PM25","PRS","RAINF","RH","SO2","SR",
            "TOUT","WSR","WDR")

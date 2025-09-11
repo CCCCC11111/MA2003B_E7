@@ -10,6 +10,13 @@ knitr::opts_chunk$set(echo = TRUE)
 ```
 
 ```{r}
+df_centro = read.csv("DATASET_CENTRO_LIMPIO2")
+df_norte = read.csv("DATASET_NORTE_LIMPIO2")
 
+df_centro = scale(df_centro)
+df_norte = scale(df_norte)
+
+write.csv(df_centro, "DATASET_CENTRO_ESCALADO")
+write.csv(df_norte, "DATASET_NORTE_ESCALADO")
 ```
 
