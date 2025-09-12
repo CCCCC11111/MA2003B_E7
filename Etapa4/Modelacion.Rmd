@@ -421,7 +421,7 @@ plot(model_ce_o3,which=1,lwd=3)
 ```
 
 ```{r}
-plot(model_ce_o3,which=2)
+plot(model_ce_o3,which=2,lwd=3)
 ```
 
 ```{r}
