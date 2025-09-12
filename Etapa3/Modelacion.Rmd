@@ -18,8 +18,8 @@ library(MVN)
 ```
 
 ```{r}
-df_centro = read.csv("DATASET_CENTRO_ESCALADO")
-df_norte = read.csv("DATASET_NORTE_ESCALADO")
+df_centro = read.csv("DATASET_CENTRO_LIMPIO2")
+df_norte = read.csv("DATASET_NORTE_LIMPIO2")
 
 names <- c("X","Fecha_y_hora","CO","NO","NO2","NOX","O3","PM10","PM25","PRS","RAINF","RH","SO2","SR",
            "TOUT","WSR","WDR")
@@ -401,11 +401,11 @@ summary(model_ce_o3)
 # Test
 
 ```{r}
-ggpairs(df_centro[, c(2, 10:12 , 14:17)], title = "Correlation matrix with graphs")
+ggpairs(df_centro[, c(10:12 , 14:17)], title = "Correlation matrix with graphs")
 ```
 
 ```{r}
-corrplot(cor(df_centro[, c(2, 10:12 , 14:17)]), method = "color", type = "upper", tl.cex = 0.8)
+corrplot(cor(df_centro[, c(10:12 , 14:17)]), method = "color", type = "upper", tl.cex = 0.8)
 ```
 
 ```{r}
